@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/java/edu/tamu/ctv/service/validator
+END
+ProjectFormValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/java/edu/tamu/ctv/service/validator/ProjectFormValidator.java
+END
+UserFormValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/java/edu/tamu/ctv/service/validator/UserFormValidator.java
+END
+EmailValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/service/validator/EmailValidator.java
+END

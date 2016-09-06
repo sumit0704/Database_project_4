@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="edu.tamu.ctv.entity.Projects" table="projects" schema="public" optimistic-lock="version">
+		<id name="id" type="long">
+			<column name="project_id" />
+			<generator class="sequence">
+				<param name="sequence">projects_id_seq</param>
+			</generator>
+		</id>
+		<many-to-one name="projecttypes" class="edu.tamu.ctv.entity.Projecttypes" fetch="select">
+            <column name="projecttype" not-null="true" />
+        </many-to-one>
+        <property name="code" type="string">
+            <column name="code" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+		<property name="access" column="access" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">edu.tamu.ctv.entity.enums.Access</param>
+			</type>
+		</property>
+		<property name="status" column="status" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">edu.tamu.ctv.entity.enums.Status</param>
+			</type>
+		</property>
+        <property name="notes" type="string">
+            <column name="notes" />
+        </property>
+        <property name="starts" type="timestamp">
+            <column name="starts" length="29" />
+        </property>
+        <property name="ends" type="timestamp">
+            <column name="ends" length="29" />
+        </property>
+        <property name="registereddt" type="timestamp">
+            <column name="registereddt" length="29" not-null="true" default="current_date"/>
+        </property>
+        <property name="lastupdatedt" type="timestamp">
+            <column name="lastupdatedt" length="29" not-null="true" default="current_date"/>
+        </property>
+        <many-to-one name="createdby" class="edu.tamu.ctv.entity.Users" fetch="select">
+            <column name="createdby" not-null="true" />
+        </many-to-one>
+        <many-to-one name="lastmodifiedby" class="edu.tamu.ctv.entity.Users" fetch="select">
+            <column name="lastmodifiedby" not-null="true" />
+        </many-to-one>
+        <property name="version" type="long">
+            <column name="version" not-null="true" />
+        </property>
+        <set name="projectmanagerses" table="projectmanagers" inverse="false" lazy="true" fetch="select" cascade="none">
+            <key>
+            	<column name="project_id" />
+            </key>
+            <many-to-many class="edu.tamu.ctv.entity.Users">
+                <column name="user_id"/>
+            </many-to-many>
+        </set>
+        <set name="projectreviewerses" table="projectreviewers" inverse="false" lazy="true" fetch="select" cascade="none">
+            <key>
+            	<column name="project_id" />
+            </key>
+            <many-to-many class="edu.tamu.ctv.entity.Users">
+                <column name="user_id"/>
+            </many-to-many>
+        </set>
+        <set name="projectmemberses" table="projectmembers" inverse="false" lazy="true" fetch="select" cascade="none">
+            <key>
+            	<column name="project_id" />
+            </key>
+            <many-to-many class="edu.tamu.ctv.entity.Users">
+                <column name="user_id"/>
+            </many-to-many>
+        </set> 
+
+        <set name="rowtypeses" table="rowtypes" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.ctv.entity.Rowtypes" />
+        </set>
+        <set name="componentses" table="components" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.ctv.entity.Components" />
+        </set>
+        <set name="columntypeses" table="columntypes" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.ctv.entity.Columntypes" />
+        </set>
+        <set name="resultses" table="results" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.ctv.entity.Results" />
+        </set>
+    </class>
+</hibernate-mapping>

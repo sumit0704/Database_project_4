@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/java/edu/tamu/ctv/repository
+END
+ResultsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/voliynyk/database_project/!svn/ver/58/trunk/src/main/java/edu/tamu/ctv/repository/ResultsRepository.java
+END
+UsersRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/java/edu/tamu/ctv/repository/UsersRepository.java
+END
+UnitsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/voliynyk/database_project/!svn/ver/20/trunk/src/main/java/edu/tamu/ctv/repository/UnitsRepository.java
+END
+RowHeadersRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/66/trunk/src/main/java/edu/tamu/ctv/repository/RowHeadersRepository.java
+END
+CoulumnHeadersRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/voliynyk/database_project/!svn/ver/7/trunk/src/main/java/edu/tamu/ctv/repository/CoulumnHeadersRepository.java
+END
+ColumnTypesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/voliynyk/database_project/!svn/ver/47/trunk/src/main/java/edu/tamu/ctv/repository/ColumnTypesRepository.java
+END
+ResultsHistoryRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/java/edu/tamu/ctv/repository/ResultsHistoryRepository.java
+END
+UserRolesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/java/edu/tamu/ctv/repository/UserRolesRepository.java
+END
+ColumnTypesTemplRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/voliynyk/database_project/!svn/ver/23/trunk/src/main/java/edu/tamu/ctv/repository/ColumnTypesTemplRepository.java
+END
+ComponentsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/48/trunk/src/main/java/edu/tamu/ctv/repository/ComponentsRepository.java
+END
+ImportInfoRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/java/edu/tamu/ctv/repository/ImportInfoRepository.java
+END
+NotesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/java/edu/tamu/ctv/repository/NotesRepository.java
+END
+ProjectsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/java/edu/tamu/ctv/repository/ProjectsRepository.java
+END
+ColumnHeadersRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/voliynyk/database_project/!svn/ver/37/trunk/src/main/java/edu/tamu/ctv/repository/ColumnHeadersRepository.java
+END
+SequencesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/voliynyk/database_project/!svn/ver/7/trunk/src/main/java/edu/tamu/ctv/repository/SequencesRepository.java
+END
+ProjectTypesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/voliynyk/database_project/!svn/ver/20/trunk/src/main/java/edu/tamu/ctv/repository/ProjectTypesRepository.java
+END
+RowTypesRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/voliynyk/database_project/!svn/ver/66/trunk/src/main/java/edu/tamu/ctv/repository/RowTypesRepository.java
+END
+RowTypesTemplRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/java/edu/tamu/ctv/repository/RowTypesTemplRepository.java
+END
+OrdersRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/voliynyk/database_project/!svn/ver/59/trunk/src/main/java/edu/tamu/ctv/repository/OrdersRepository.java
+END

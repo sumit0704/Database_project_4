@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/voliynyk/database_project/!svn/ver/32/trunk/src/main/java/edu/tamu/ctv/entity/enums
+END
+Access.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/voliynyk/database_project/!svn/ver/30/trunk/src/main/java/edu/tamu/ctv/entity/enums/Access.java
+END
+Status.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/voliynyk/database_project/!svn/ver/32/trunk/src/main/java/edu/tamu/ctv/entity/enums/Status.java
+END
+Roles.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/voliynyk/database_project/!svn/ver/30/trunk/src/main/java/edu/tamu/ctv/entity/enums/Roles.java
+END

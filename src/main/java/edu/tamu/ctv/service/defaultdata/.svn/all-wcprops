@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/voliynyk/database_project/!svn/ver/74/trunk/src/main/java/edu/tamu/ctv/service/defaultdata
+END
+InitProjectCreateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/voliynyk/database_project/!svn/ver/74/trunk/src/main/java/edu/tamu/ctv/service/defaultdata/InitProjectCreateService.java
+END
+InitProjectTypeCreateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/voliynyk/database_project/!svn/ver/30/trunk/src/main/java/edu/tamu/ctv/service/defaultdata/InitProjectTypeCreateService.java
+END
+InitRowTypeTemplCreateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/voliynyk/database_project/!svn/ver/37/trunk/src/main/java/edu/tamu/ctv/service/defaultdata/InitRowTypeTemplCreateService.java
+END
+InitUserCreateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/voliynyk/database_project/!svn/ver/30/trunk/src/main/java/edu/tamu/ctv/service/defaultdata/InitUserCreateService.java
+END
+InitUnitCreateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/voliynyk/database_project/!svn/ver/30/trunk/src/main/java/edu/tamu/ctv/service/defaultdata/InitUnitCreateService.java
+END
+InitColumnTypeTemplCreateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/voliynyk/database_project/!svn/ver/26/trunk/src/main/java/edu/tamu/ctv/service/defaultdata/InitColumnTypeTemplCreateService.java
+END

@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/resources/entity
+END
+Columntypes.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/voliynyk/database_project/!svn/ver/21/trunk/src/main/resources/entity/Columntypes.hbm.xml
+END
+Resultshistory.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/resources/entity/Resultshistory.hbm.xml
+END
+Userroles.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/voliynyk/database_project/!svn/ver/14/trunk/src/main/resources/entity/Userroles.hbm.xml
+END
+Columntypestempl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/resources/entity/Columntypestempl.hbm.xml
+END
+Components.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/voliynyk/database_project/!svn/ver/66/trunk/src/main/resources/entity/Components.hbm.xml
+END
+Importinfo.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/resources/entity/Importinfo.hbm.xml
+END
+Notes.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/resources/entity/Notes.hbm.xml
+END
+Projects.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/resources/entity/Projects.hbm.xml
+END
+Columnheaders.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/voliynyk/database_project/!svn/ver/21/trunk/src/main/resources/entity/Columnheaders.hbm.xml
+END
+Sequences.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/voliynyk/database_project/!svn/ver/7/trunk/src/main/resources/entity/Sequences.hbm.xml
+END
+Projecttypes.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/resources/entity/Projecttypes.hbm.xml
+END
+Rowtypes.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/voliynyk/database_project/!svn/ver/34/trunk/src/main/resources/entity/Rowtypes.hbm.xml
+END
+Rowtypestempl.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/voliynyk/database_project/!svn/ver/22/trunk/src/main/resources/entity/Rowtypestempl.hbm.xml
+END
+Orders.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/voliynyk/database_project/!svn/ver/66/trunk/src/main/resources/entity/Orders.hbm.xml
+END
+Results.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/voliynyk/database_project/!svn/ver/66/trunk/src/main/resources/entity/Results.hbm.xml
+END
+Users.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/resources/entity/Users.hbm.xml
+END
+Units.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/voliynyk/database_project/!svn/ver/7/trunk/src/main/resources/entity/Units.hbm.xml
+END
+Rowheaders.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/voliynyk/database_project/!svn/ver/34/trunk/src/main/resources/entity/Rowheaders.hbm.xml
+END

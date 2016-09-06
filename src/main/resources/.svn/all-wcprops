@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/resources
+END
+ehcache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/voliynyk/database_project/!svn/ver/34/trunk/src/main/resources/ehcache.xml
+END
+messages.properties
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/voliynyk/database_project/!svn/ver/1/trunk/src/main/resources/messages.properties
+END
+validation.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/voliynyk/database_project/!svn/ver/73/trunk/src/main/resources/validation.properties
+END
+DataBaseScripts.sql
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/resources/DataBaseScripts.sql
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/voliynyk/database_project/!svn/ver/1/trunk/src/main/resources/log4j.properties
+END
+application.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/resources/application.properties
+END

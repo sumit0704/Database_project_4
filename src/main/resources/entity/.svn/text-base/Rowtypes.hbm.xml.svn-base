@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="edu.tamu.ctv.entity.Rowtypes" table="rowtypes" schema="public" optimistic-lock="version">
+		<cache usage="read-write"/>
+		<id name="id" type="long">
+			<column name="id" />
+			<generator class="sequence">
+				<param name="sequence">rowtypes_id_seq</param>
+			</generator>
+		</id>
+		<many-to-one name="projects" class="edu.tamu.ctv.entity.Projects" fetch="select">
+            <column name="project_id" not-null="true" />
+        </many-to-one>
+        <property name="code" type="string">
+            <column name="code" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="showorder" type="int">
+            <column name="showorder" />
+        </property>
+        <property name="notes" type="string">
+            <column name="notes" />
+        </property>
+        <property name="registereddt" type="timestamp">
+            <column name="registereddt" length="29" not-null="true" />
+        </property>
+        <set name="rowheaderses" table="rowheaders" inverse="true" lazy="true" fetch="select">
+            <cache usage="read-write"/>
+            <key>
+                <column name="rowtype_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.tamu.ctv.entity.Rowheaders" />
+        </set>
+    </class>
+</hibernate-mapping>

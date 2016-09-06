@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/voliynyk/database_project/!svn/ver/78/trunk/src/main/webapp/WEB-INF/views/projects
+END
+projectform.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/voliynyk/database_project/!svn/ver/78/trunk/src/main/webapp/WEB-INF/views/projects/projectform.jsp
+END
+list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/voliynyk/database_project/!svn/ver/78/trunk/src/main/webapp/WEB-INF/views/projects/list.jsp
+END
+select.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/voliynyk/database_project/!svn/ver/78/trunk/src/main/webapp/WEB-INF/views/projects/select.jsp
+END
+show.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/voliynyk/database_project/!svn/ver/77/trunk/src/main/webapp/WEB-INF/views/projects/show.jsp
+END

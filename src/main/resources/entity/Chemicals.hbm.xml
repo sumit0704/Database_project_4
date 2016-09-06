@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="edu.tamu.ctv.entity.Chemicals" table="chemicals" schema="public" optimistic-lock="version">
+		<id name="id" type="string">
+			<column name="id" />
+			
+		</id>
+         <property name="sample" type="string">
+            <column name="sample" not-null="true"  />
+        </property>
+        <property name="category" type="string">
+            <column name="category" not-null="true" />
+        </property>
+        <property name="cas" type="string">
+			<column name="cas" not-null="true" />
+		</property>
+		<property name="toxpibio" type="string">
+			<column name="toxpibio" not-null="true" />
+		</property>
+		<property name="toxpichemo" type="string">
+			<column name="toxpichemo" not-null="true" />
+		</property>
+        <property name="toxpibiochemo" type="string">
+			<column name="toxpibiochemo" not-null="true" />
+		</property>
+        
+        
+       
+    </class>
+</hibernate-mapping>

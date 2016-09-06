@@ -1,0 +1,3 @@
+This copy is derived from the following github master repository.
+Because I moved the directory from another computer, so I have to start a new master repository. 
+https://github.com/voliynyk/database_project

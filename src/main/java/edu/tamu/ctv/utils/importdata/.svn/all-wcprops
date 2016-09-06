@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/java/edu/tamu/ctv/utils/importdata
+END
+ImportLevel.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/ImportLevel.java
+END
+ImportManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/voliynyk/database_project/!svn/ver/70/trunk/src/main/java/edu/tamu/ctv/utils/importdata/ImportManager.java
+END
+ImportResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/ImportResult.java
+END
+ImportComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/ImportComponent.java
+END
+UniversalDataImport.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/UniversalDataImport.java
+END

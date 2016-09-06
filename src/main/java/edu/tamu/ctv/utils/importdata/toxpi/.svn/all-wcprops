@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi
+END
+FileProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/FileProcessor.java
+END
+Slice.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/Slice.java
+END
+DataTransformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/DataTransformation.java
+END
+Component.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/Component.java
+END
+Utility.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/Utility.java
+END
+Substance.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/Substance.java
+END
+FileData.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/FileData.java
+END
+ToxPiConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/voliynyk/database_project/!svn/ver/2/trunk/src/main/java/edu/tamu/ctv/utils/importdata/toxpi/ToxPiConfig.java
+END
