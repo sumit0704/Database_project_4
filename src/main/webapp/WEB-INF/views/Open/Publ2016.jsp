@@ -5,7 +5,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <jsp:include page="../fragments/header.jsp" />
 <head>
@@ -22,6 +23,9 @@ table, th, td {
 </style>
 </head>
 <body>
+
+
+
 <br>
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
 &nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
@@ -43,17 +47,12 @@ table, th, td {
 	<a href = "http://pubs.rsc.org/en/content/articlelanding/2016/gc/c6gc01147k#!divAbstract"
 		target = _blank>
 		2016 Journal Paper</a>
-<br><br>
-TTT: <br>
-${chemicals.get(0).getCas()}
-
-<br>
-
+<br><br><br><br><br>
 
 
 Table 1 Chemical-biological data-based grouping of petroleum substances in ToxPi
 
- <table style="width:80%">
+<table style="width:80%">
   <tr>
     <th># </th>
     <th>Sample </th>
@@ -63,153 +62,27 @@ Table 1 Chemical-biological data-based grouping of petroleum substances in ToxPi
     <th>ToxPi (volatility) </th>
     <th>ToxPi (chem-biol)</th>
   </tr>
+  <c:forEach var="i" begin="0" end="20">
+<tr><td>${i + 1}</td><td><div class="dropdown">
+  		<button class="dropbtn">${chemicals.get(i).getSample()}</button><div class="dropdown-content">
+  			<a href="/database_project/Open/CrudeOil">Source</a>
+    		<a href="Cells?Category=${chemicals.get(i).getCategory()}&Cells=Cardio">Cardiomyocytes</a>
+    		<a href="Cells?Category=${chemicals.get(i).getCategory()}&Cells=Hepa">Hepatocytes</a>	
+  		</div></div></td>
+  	<td> ${chemicals.get(i).getCategory()} </td><td>${chemicals.get(i).getCas()},</td>	
+  	<td>${chemicals.get(i).getToxpibio()},</td><td>${chemicals.get(i).getToxpichemo()}, </td>
+  	<td>${chemicals.get(i).getToxpibiochemo()}</td></tr>
+  	
+  	
+  	</c:forEach>
 
-
- 
-<tr><td>1</td><td><div class="dropdown">
-  		<button class="dropbtn">CON-01</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=SRGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=SRGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td>
-  	<td> SRGOa </td><td>64741-43-1</td>	<td>9.0 </td><td>9.0 </td><td>2.8 </td></tr>
-
-<tr><td>2</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-02</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=SRGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=SRGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div>
-  	</td><td>SRGOa</td><td>68814-87-9</td><td>8.2</td><td>9.6 </td><td>2.7</td></tr>
-<tr><td>3</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-03</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=SRGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=SRGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td>
-	<td>SRGOa</td><td>68814-87-9</td><td>5.9</td><td>10.1</td><td>2.1</td></tr>
-<tr><td>4</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-04</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=SRGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=SRGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td>
-  	<td>SRGOa</td><td>68915-96-8</td><td>9.5</td><td>8.3</td><td>2.7</td></tr>
-<tr><td>5</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-05</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=SRGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=SRGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td>
-  	<td>SRGOa</td><td>64741-43-1</td><td>7.9</td><td>8.6</td><td>2.4</td></tr>
-<tr><td>6</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-07</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=OGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=OGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td>
-  	<td>OGOb</td><td>64742-46-7</td><td>4.1</td><td>11.1</td><td>1.8</td></tr>
-<tr><td>7</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-09</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=OGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=OGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td>
-  	<td>OGOb</td><td>64742-80-9</td><td>5.6</td><td>10.5</td><td>2.0</td></tr>
-<tr><td>8</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-12</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div>
-	</td><td>VHGOc</td><td>64741-49-7</td><td>10.8</td><td>9.5</td><td>3.2</td></tr>
-<tr><td>9</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-13</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div>
-  	</td><td>VHGOc</td><td>64741-58-8</td><td>11.5</td><td>7.8</td><td>3.0</td></tr>
-<tr><td>10</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-14</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div>
-  	</td><td>VHGOc</td><td>64741-77-1</td><td>8.7</td><td>9.7</td><td>2.7</td></tr>
-<tr><td>11</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-15</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div>
-  	</td><td>VHGOc</td><td>64742-87-6</td><td>9.9</td><td>9.6</td><td>3.1</td></tr>
-<tr><td>12</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-16i</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>VHGOc</td><td>68334-30-5</td><td>8.8</td><td>12.7</td><td>2.9</td></tr>
-<tr><td>13</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-16ii</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>VHGOc</td><td>68334-30-5</td><td>7.9</td><td>10.6</td><td>2.8</td></tr>
-<tr><td>14</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-17</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>VHGOc</td><td>68476-30-2</td><td>6.3</td><td>11.3</td><td>2.5</td></tr>
-<tr><td>15</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-18</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>VHGOc</td><td>68476-31-3</td><td>10.2</td><td>8.5</td><td>3.2</td></tr>
-<tr><td>16</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-20</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=VHGO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=VHGO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>VHGOc</td><td>92045-24-4</td><td>10.5</td><td>8.1</td><td>2.8</td></tr>
-<tr><td>17</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-26</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=RAE&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=RAE&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>RAEd</td><td>64742-10-5</td><td>1.2</td><td>4.3</td><td>0.4</td></tr>
-<tr><td>18</td><td><div class="dropdown">
-  	<button class="dropbtn">CON-27</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=RAE&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=RAE&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>RAEd</td><td>91995-70-9</td><td>2.7</td><td>4.4</td><td>0.7</td></tr>
-<tr><td>19</td><td><div class="dropdown">
-  	<button class="dropbtn">A083/13</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=HFO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=HFO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>HFOe</td><td>68476-33-5</td><td>6.6</td><td> - </td><td>1.3</td></tr>
-<tr><td>20</td><td><div class="dropdown">
-  	<button class="dropbtn">A087/13</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=HFO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=HFO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>HFOe</td><td>68476-33-5</td><td>3.6</td><td> - </td><td>0.8</td></tr>
-<tr><td>21</td><td><div class="dropdown">
-  	<button class="dropbtn">A092/13</button><div class="dropdown-content">
-  			<a href="/database_project/Open/CrudeOil">Source</a>
-    		<a href="Cells?Category=HFO&Cells=Cardio">Cardiomyocytes</a>
-    		<a href="Cells?Category=HFO&Cells=Hepa">Hepatocytes</a>	
-  		</div></div></td><td>HFOe</td><td>68476-33-5</td><td>5.4</td><td> - </td><td>1.2</td></tr>
 
 </table> 
 <div class="cas64741-43-1" onmouseover="bigImg(this)" onmouseout="normalImg(this)" ></div>
-a Straight run gas oil. b Other gas oil. c Vacuum & hydrotreated gas oil. d Residual aromatic extract. e Heavy fuel oil.
-	<script>
+a Straight run gas oil. b Other gas oil. c Vacuum & hydrotreated gas oil. 
+d Residual aromatic extract. e Heavy fuel oil.
 	
+<script>
 function bigImg(x) {
 	// alert(" : ) ");
 	$(".cas64741-43-1").css("font-size","24px");
@@ -236,37 +109,11 @@ $(".cas64741-43-1").hover(function(e) {
      function() {$("#foo").hide(100);}
      );	// end of hover    
 </script>
-<div id="abcd">hello</div>
-<a class="ab" href="http://foo.com" data-tooltip="#foo" id="abc">foo</a>
+
+
+
+
 <br><br>
-<a class="ab" href="http://bar.com" data-tooltip="#bar">bar</a>
-
-<div id="foo" style = "position:absolute; background:#CCC; border: 1px solid;">
-	<a href="/database_project/Open/CrudeOil">Source;</a><br />
-	<a href="/database_project/Open/Cells">Cells</a><br>
-	</div>
-<div id="bar" style = "position:absolute; display:none; background:#CCC; border: 1px solid;">bar means bar</div>
-<br><br>
-
-
- <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div>
-
-<div class="dropdown">
-  <button class="dropbtn">Dropdown 2</button>
-  <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3, <img src = "http://pic.pimg.tw/dinosaurs/4a151a51b5dc1.jpg" /></a>
-  </div>
-</div>
-
 
 
 

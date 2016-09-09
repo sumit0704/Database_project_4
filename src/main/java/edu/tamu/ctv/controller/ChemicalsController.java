@@ -55,10 +55,11 @@ public class ChemicalsController {
 	{
 		logger.debug("\n\n-----------------------\nShow Chemicals Controller Reached");
 		model.addAttribute("chemicals", chemicalsRepository.findAll());
-		System.out.println();
-		System.out.println(chemicalsRepository.findAll().toString());
-		System.out.println(chemicalsRepository.findAll());
-		System.out.println();
+		// System.out.println("\n..\n\n...");
+		// System.out.println(chemicalsRepository.findAll().toString());
+		// System.out.println("\n...\n\n...");
+		// System.out.println(chemicalsRepository.findAll());
+		// System.out.println("\n..\n\n..");
 		List<Chemicals> chemicals = chemicalsRepository.findAll();
 		
 		System.out.println(chemicals.get(0).getCas());
