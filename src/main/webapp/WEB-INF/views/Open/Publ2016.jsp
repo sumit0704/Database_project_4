@@ -79,8 +79,9 @@ Table 1 Chemical-biological data-based grouping of petroleum substances in ToxPi
 
 </table> 
 <div class="cas64741-43-1" onmouseover="bigImg(this)" onmouseout="normalImg(this)" ></div>
-a Straight run gas oil. b Other gas oil. c Vacuum & hydrotreated gas oil. 
-d Residual aromatic extract. e Heavy fuel oil.
+SRGO for Straight Run Gas Oil. OGS for Other Gas Oil. VHGO for Vacuum & Hydrotreated Gas Oil. 
+RAE for Residual Aromatic Extract. HFO for Heavy Fuel Oil. 
+Here is <a href="/database_project/Open/CrudeOil">a crude oil processing diagram.</a>
 	
 <script>
 function bigImg(x) {

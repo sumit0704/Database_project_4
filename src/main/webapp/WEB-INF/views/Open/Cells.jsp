@@ -81,20 +81,17 @@ else if( mOption.equals( "CUSTOMER" ) )
 String methods = "";
 if( Cells.equals( "Cardio" ) ){
 	out.print("Cardiomyocytes");
-	methods = "Cardiomyocytes were treated with the chemicals listed above, and the intensity of the fluorescence was video recorded. The beats per minute (BPM) were read from the fluorescent intensity variation.";	
+	methods = "iCell cardiomyocytes, which are induced pluripotent stem cells, were treated with the petroleum substances listed above, and the intensity of the fluorescence was video recorded. The beats per minute (BPM) were read from the fluorescent intensity variation. DMSO was the solvent, The final concentrationof DMSO in assay wells following addition of test substances was 1% (v/v), an amount of DMSO consistent with previous reports which by itself had no effect on cardiomyocyte- or hepatocyte-derived phenotypes.";	
 }
 else if( Cells.equals( "Hepa" ) ){
 	out.print("Hepatocytes");
-    methods = "Hepatocytes were treated with the chemicals listed above, and the cell viability was recorded. For more detail please check the publication.";	
+    methods = "iCell hepatocytes, which are induced pluripotent stem cells,  were treated with the petroleum substances listed above, and the cell viability was recorded. For more detail please check the publication. DMSO was the solvent, The final concentrationof DMSO in assay wells following addition of test substances was 1% (v/v), an amount of DMSO consistent with previous reports which by itself had no effect on cardiomyocyte- or hepatocyte-derived phenotypes.";		
 }
 %>
 </h2>
 &nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	<div id="img"></div>
 <br></br>
 <%=methods %>
-<br><br></br>..
-<%--
-System.out.println("\n\n\nju\n\n\n"); 
---%>,
+<br><br></br>
 </body>
 </html>
