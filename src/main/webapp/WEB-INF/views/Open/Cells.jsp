@@ -66,8 +66,7 @@ else if( mOption.equals( "CUSTOMER" ) )
 <body>
 
 	<br>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
-	<a href = "/database_project" target = _blank>
-		Back to Home Page</a>
+	<a href = "/database_project" target = _blank>Back Home Page</a>
 
 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
 	<a href = "/database_project/Open/Publ2016" target = _blank>
@@ -81,11 +80,24 @@ else if( mOption.equals( "CUSTOMER" ) )
 String methods = "";
 if( Cells.equals( "Cardio" ) ){
 	out.print("Cardiomyocytes");
-	methods = "iCell cardiomyocytes, which are induced pluripotent stem cells, were treated with the petroleum substances listed above, and the intensity of the fluorescence was video recorded. The beats per minute (BPM) were read from the fluorescent intensity variation. DMSO was the solvent, The final concentrationof DMSO in assay wells following addition of test substances was 1% (v/v), an amount of DMSO consistent with previous reports which by itself had no effect on cardiomyocyte- or hepatocyte-derived phenotypes.";	
+	methods = "&nbsp;	&nbsp;	&nbsp;	&nbsp;iCell cardiomyocytes, which are induced pluripotent " +
+		"stem cells, were treated with " +
+		"the petroleum substances listed above and the intensity of the fluorescence was video " +
+		"recorded.  The beats per minute (BPM) were read from the fluorescent intensity variation. "+
+		"DMSO was the solvent, The final concentrationof DMSO in assay wells following addition of " +
+		"test substances was 1% (v/v), an amount of DMSO consistent with previous reports "+
+		"which by itself had no effect on cardiomyocyte- or hepatocyte-derived phenotypes. " + 
+		"Data points represent means of duplicate determinations (n = 2)";	
 }
 else if( Cells.equals( "Hepa" ) ){
 	out.print("Hepatocytes");
-    methods = "iCell hepatocytes, which are induced pluripotent stem cells,  were treated with the petroleum substances listed above, and the cell viability was recorded. For more detail please check the publication. DMSO was the solvent, The final concentrationof DMSO in assay wells following addition of test substances was 1% (v/v), an amount of DMSO consistent with previous reports which by itself had no effect on cardiomyocyte- or hepatocyte-derived phenotypes.";		
+    methods = "&nbsp;	&nbsp;	&nbsp;	&nbsp;iCell hepatocytes, which are induced pluripotent stem " + 
+		"cells,  were treated with the " +
+		"petroleum substances listed above, and the cell viability was recorded. For more detail " + 
+    	"please check the publication. DMSO was the solvent, The final concentrationof DMSO in assay " + 
+		"wells following addition of test substances was 1% (v/v), an amount of DMSO consistent with " + 
+    	"previous reports which by itself had no effect on cardiomyocyte- or hepatocyte-derived " +
+		"phenotypes. Data points represent means of duplicate determinations (n = 2)";		
 }
 %>
 </h2>
