@@ -30,6 +30,7 @@
 	<br />
 
 	<spring:url value="/projects" var="projectActionUrl" />
+	What is this Url: ${projectActionUrl}
 
 	<form:form class="form-horizontal" method="post" modelAttribute="projectForm" action="${projectActionUrl}">
 

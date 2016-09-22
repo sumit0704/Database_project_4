@@ -28,7 +28,8 @@ value = ${_csrf.token} <br><br>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">File to upload:</label>
 								<div class="col-sm-10">
-									<input type="file" name="file" class="form-control"  placeholder="File to upload" />
+									.<input type="file" name="file" class="form-control"  placeholder="File to upload" />
+									..
 								</div>
                         	</div>
                         	<div class="form-group">
