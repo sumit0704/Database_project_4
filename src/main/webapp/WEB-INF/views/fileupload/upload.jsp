@@ -12,7 +12,6 @@
 
 
 <body>
-
 CSRF Cookie Name: ${_csrf.parameterName} <br>
 value = ${_csrf.token} <br><br>
 
