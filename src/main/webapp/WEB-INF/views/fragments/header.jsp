@@ -47,13 +47,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				
-			<li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="${urlListUser}">List</a></li>
-                <li><a href="${urlAddUser}">Add User</a></li>
-              </ul>
-            </li>
+
 			<li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project <span class="caret"></span></a>
               <ul class="dropdown-menu">

@@ -114,7 +114,8 @@ font-weight:bold;
 
 <div id="first-frame">
 <br>
-<div align="right"><a href = "login" >Sign In</a> &nbsp; &nbsp; &nbsp;</div>
+<div align="right"><a href = "login" >Sign In</a> &nbsp; &nbsp; &nbsp;
+	<a href = "Open/applicant" >Sign Up</a>  &nbsp; &nbsp; &nbsp;</div>
 <br><br>
 
 
