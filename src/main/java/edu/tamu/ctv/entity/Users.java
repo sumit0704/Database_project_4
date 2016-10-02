@@ -36,6 +36,8 @@ public class Users implements Serializable
 	private String notes;
 	private Date registereddt;
 	private Date lastvisitdt;
+	private String approved;
+	private String admin;
 	private Set<Results> resultses = new HashSet<Results>(0);
 	private Set<Importinfo> importinfos = new HashSet<Importinfo>(0);
 	private Set<Components> componentses = new HashSet<Components>(0);
@@ -65,7 +67,7 @@ public class Users implements Serializable
 	}
 
 	public Users(Long id, String login, String password, String firstname, String lastname, String email, String phone, String address1, String country, String state, String zip, String sex,
-			Date registereddt, Date lastvisitdt, Date birthday, String city)
+			Date registereddt, Date lastvisitdt, Date birthday, String cit, String approved, String admin)
 	{
 		this.id = id;
 		this.login = login;
@@ -76,13 +78,15 @@ public class Users implements Serializable
 		this.phone = phone;
 		this.address1 = address1;
 		this.country = country;
-		this.city = city;
+		this.city = cit;
 		this.state = state;
 		this.zip = zip;
 		this.sex = sex;
 		this.registereddt = registereddt;
 		this.lastvisitdt = lastvisitdt;
 		this.birthday = birthday;
+		this.approved = approved;
+		this.admin = admin;
 		
 	}
 
@@ -470,5 +474,28 @@ public class Users implements Serializable
 	{
 		this.projectmemberses = projectmemberses;
 	}
+	
+	
+	public String getApproved()
+	{
+		return approved;
+	}
+
+	public void setApproved(String approved)
+	{
+		this.approved = approved;
+	}
+
+	
+	public String getAdmin()
+	{
+		return admin;
+	}
+
+	public void setAdmin(String admin)
+	{
+		this.approved = admin;
+	}
+	
 
 }

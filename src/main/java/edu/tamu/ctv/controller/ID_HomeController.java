@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.tamu.ctv.entity.customdefined.ContactForm;
+import edu.tamu.ctv.repository.UsersRepository;
 import edu.tamu.ctv.utils.session.ProjectAuthentication;
 
 @Controller
@@ -23,6 +24,8 @@ public class ID_HomeController
 	@Autowired		// This a few lines were added by LD.
 	private ProjectAuthentication projectAuthentication;
 	
+	@Autowired
+	private UsersRepository userRepository;
 	
 	@RequestMapping(value = "/Protected/ID_home", method = RequestMethod.GET)
 	public String index(Model model)
@@ -30,11 +33,11 @@ public class ID_HomeController
 		System.out.println("\n\nLogin @ home: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
 		String id = projectAuthentication.getCurrentUser().getLogin();
 
-		
+		model.addAttribute("users", userRepository.findAll());		// This line is very important.
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		
 		logger.debug("index()");
 		return "/Protected/ID_home";
-		// return "home";
 	}
 	
 	@RequestMapping(value = "/contact/need modification", method = RequestMethod.GET)

@@ -1,4 +1,9 @@
+<%@ page import="edu.tamu.ctv.controller.ID_HomeController"%>
 <%@ page session="false"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -6,12 +11,37 @@
 <html lang="en">
 <jsp:include page="../fragments/header.jsp" />
 <link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
+
+
 <body>
+
+<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     user="postgres"  password="postgres"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT admin FROM users WHERE login = '${user_id}';
+</sql:query>
+
+works: "${result.rows[0].admin}"<br>
+
+user_id:  ${user_id}
+
+<%-- <jsp:setProperty name="myName" property="something" />${user_id} --%>
+<%
+
+// String user = ID_HomeController.;
+// String user2 = projectAuthentication.getCurrentUser().getLogin();
+out.println("Your IP address is " + request.getRemoteAddr());
+out.println("Your IP address is " + "user_id");
+// if(result.rows[0].admin.equals( "VHGO" ))
+//	h = "570px";
+//else h = "450px";
+%>
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/import" var="urlImport" />
 <spring:url value="/export" var="urlExport" />
 <spring:url value="/analysis/${projectId}" var="urlDisplayAnalysis" />
-
 
     <div class="container">
 
