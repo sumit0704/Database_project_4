@@ -18,12 +18,19 @@
 <sql:query dataSource="${snapshot}" var="result">
 SELECT admin FROM users WHERE login = '${user_id}';
 </sql:query>
-${user_id};
+
 
 <c:set var="administrator" value="${result.rows[0].admin}"/>
 <c:choose>
   <c:when test="${administrator == 'YES'}">
 User_id: ${user_id}
+
+
+
+
+
+
+
 	<div class="container">
 
 		<h1>All Users</h1>
@@ -34,6 +41,7 @@ User_id: ${user_id}
 					<th>Name</th>
 					<th>lastName</th>
 					<th>Email</th>
+					<th>Approved<br>Change</th>
 				</tr>
 			</thead>
 
@@ -57,7 +65,7 @@ User_id: ${user_id}
 				Phone: ${user.phone}
 			</c:forEach>
 		</table>
-User[2].first_name: ${user[1].firstname}
+Users[0].lastname: ${users[0].lastname}
 	</div>
 	
 	
