@@ -1,4 +1,6 @@
 <%@ page session="false"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -9,6 +11,18 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <body>
+<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     user="postgres"  password="postgres"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT admin FROM users WHERE login = '${user_id}';
+</sql:query>
+${user_id};
+
+<c:set var="administrator" value="${result.rows[0].admin}"/>
+<c:choose>
+  <c:when test="${administrator == 'YES'}">
 User_id: ${user_id}
 	<div class="container">
 
@@ -45,7 +59,14 @@ User_id: ${user_id}
 		</table>
 User[2].first_name: ${user[1].firstname}
 	</div>
-
+	
+	
+ </c:when>  
+  <c:otherwise>
+    Insufficient authorization to see this page.  
+  </c:otherwise>
+</c:choose> <!-- end of if YES administrator -->
+<br>
 	<jsp:include page="../fragments/footer.jsp" />
 
 </body>

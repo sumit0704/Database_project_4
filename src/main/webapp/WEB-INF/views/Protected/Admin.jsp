@@ -31,7 +31,7 @@
 
 <spring:url value="/users" var="urlListUser" />
 
-                <a href="${urlListUser}">List Users and Applicants
+                <a href="${urlListUser}">List Users and Applicants</a>
         </div>
     </div>
 <jsp:include page="../fragments/footer.jsp" />

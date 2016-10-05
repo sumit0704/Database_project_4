@@ -14,7 +14,6 @@
 
 
 <body>
-
 <sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
      url="jdbc:postgresql://localhost:5432/webtoxpi"
      user="postgres"  password="postgres"/>
@@ -23,21 +22,18 @@
 SELECT admin FROM users WHERE login = '${user_id}';
 </sql:query>
 
-works: "${result.rows[0].admin}"<br>
+<c:set var="administrator" value="${result.rows[0].admin}"/>
+<spring:url value="/users" var="urlListUser" />
 
-user_id:  ${user_id}
+value= "${result.rows[0].admin}"
 
-<%-- <jsp:setProperty name="myName" property="something" />${user_id} --%>
-<%
+<c:choose>
+  <c:when test="${administrator == 'YES'}">
 
-// String user = ID_HomeController.;
-// String user2 = projectAuthentication.getCurrentUser().getLogin();
-out.println("Your IP address is " + request.getRemoteAddr());
-out.println("Your IP address is " + "user_id");
-// if(result.rows[0].admin.equals( "VHGO" ))
-//	h = "570px";
-//else h = "450px";
-%>
+   <p><a href="${urlListUser}">List Users and Applicants</a><p>
+ </c:when>  
+</c:choose> <!-- end of if YES administrator -->
+
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/import" var="urlImport" />
 <spring:url value="/export" var="urlExport" />
@@ -123,6 +119,10 @@ out.println("Your IP address is " + "user_id");
             </div>
         </div>
     </div>
+    
+
+<br>
+
 <jsp:include page="../fragments/footer.jsp" />
 
 </body>
