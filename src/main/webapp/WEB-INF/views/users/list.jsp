@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <jsp:include page="../fragments/header.jsp" />
 
 <body>
