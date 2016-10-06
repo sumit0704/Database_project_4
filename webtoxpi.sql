@@ -669,7 +669,9 @@ CREATE TABLE users (
     photo bytea,
     notes character varying(255),
     registereddt timestamp without time zone,
-    lastvisitdt timestamp without time zone
+    lastvisitdt timestamp without time zone,
+    approved character varying(20),
+    admin character varying(20)
 );
 
 
@@ -746,6 +748,14 @@ COPY columntypes (id, parent_id, project_id, code, name, notes, registereddt) FR
 7	\N	2	WEIGHT	Weight	\N	2015-10-16 16:34:59.477
 8	7	2	GROUP	Group	\N	2015-10-16 16:34:59.477
 5	8	2	TYPE	Type	\N	2015-10-16 16:34:59.477
+10	9	3	TYPE	Type	\N	2016-09-19 09:53:13.117
+11	\N	3	WEIGHT	Weight	\N	2016-09-19 09:53:13.116
+12	10	3	SOURCE	Source	\N	2016-09-19 09:53:13.117
+9	11	3	GROUP	Group	\N	2016-09-19 09:53:13.117
+13	\N	4	WEIGHT	Weight	\N	2016-09-19 10:01:35.929
+14	13	4	GROUP	Group	\N	2016-09-19 10:01:35.929
+16	14	4	TYPE	Type	\N	2016-09-19 10:01:35.929
+15	16	4	SOURCE	Source	\N	2016-09-19 10:01:35.929
 \.
 
 
@@ -753,7 +763,7 @@ COPY columntypes (id, parent_id, project_id, code, name, notes, registereddt) FR
 -- Name: columntypes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('columntypes_id_seq', 8, true);
+SELECT pg_catalog.setval('columntypes_id_seq', 16, true);
 
 
 --
@@ -885,6 +895,8 @@ COPY projectreviewers (project_id, user_id) FROM stdin;
 COPY projects (project_id, projecttype, code, name, access, status, notes, starts, ends, registereddt, lastupdatedt, createdby, lastmodifiedby, version) FROM stdin;
 1	1	ProjectCode	ProjectName	0	0	\N	\N	\N	2015-10-16 16:34:10.544	2015-10-16 16:34:10.544	1	1	1
 2	1	qwre	qwr	0	0	<p>qwr</p>\r\n	\N	\N	2015-10-16 16:34:59.417	2015-10-16 16:34:59.417	1	1	1
+3	1	1122	Sample_4	0	0	<p>Sample project</p>\r\n	\N	\N	2016-09-19 09:53:13.062	2016-09-19 09:57:48.118	2	2	1
+4	1	11223	sample_new	0	0	<p>sa</p>\r\n	\N	\N	2016-09-19 10:01:35.843	2016-09-19 10:01:35.843	2	2	1
 \.
 
 
@@ -892,7 +904,7 @@ COPY projects (project_id, projecttype, code, name, access, status, notes, start
 -- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('projects_id_seq', 2, true);
+SELECT pg_catalog.setval('projects_id_seq', 4, true);
 
 
 --
@@ -968,6 +980,12 @@ COPY rowtypes (id, project_id, code, name, showorder, notes, registereddt) FROM 
 4	2	chemical_source_sid	Source	1	\N	2015-10-16 16:34:59.531
 5	2	casrn	CASR Number	2	\N	2015-10-16 16:34:59.531
 6	2	chemical_name	Chemical Name	3	\N	2015-10-16 16:34:59.531
+7	3	chemical_source_sid	Source	1	\N	2016-09-19 09:53:13.162
+8	3	chemical_name	Chemical Name	3	\N	2016-09-19 09:53:13.162
+9	3	casrn	CASR Number	2	\N	2016-09-19 09:53:13.162
+10	4	chemical_source_sid	Source	1	\N	2016-09-19 10:01:36
+11	4	casrn	CASR Number	2	\N	2016-09-19 10:01:36
+12	4	chemical_name	Chemical Name	3	\N	2016-09-19 10:01:36
 \.
 
 
@@ -975,7 +993,7 @@ COPY rowtypes (id, project_id, code, name, showorder, notes, registereddt) FROM 
 -- Name: rowtypes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('rowtypes_id_seq', 6, true);
+SELECT pg_catalog.setval('rowtypes_id_seq', 12, true);
 
 
 --
@@ -1042,11 +1060,11 @@ SELECT pg_catalog.setval('userroles_id_seq', 1, false);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY users (user_id, login, password, role, firstname, lastname, email, phone, address1, address2, country, state, zip, city, sex, website, interests, birthday, organization, organaddress, photo, notes, registereddt, lastvisitdt) FROM stdin;
-1	admin	admin	0	admin	admin	admin@mail.box	+380000000000	Lviv	\N	Ukraine	Lviv	79000	Lviv	M	\N	\N	2015-10-16 16:34:09.374	\N	\N	\N	\N	2015-10-16 16:34:09.374	2015-10-16 16:34:09.374
-2	test-id-1	test-id-1	1	test-id-1	test-id-1				\N					\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-3	test-id-2	test-id-2	1	test-id-2	test-id-2				\N					\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-4	test-id-3	test-id-3	1	test-id-3	test-id-3	1234@yahoo.com	9798451234	Whare are you?		United States	TX	77843	College Station	F	\N	\N	2000-06-20 00:00:00	TAMU	Whare are you?	\N		2016-06-17 13:48:20.156	2016-06-17 13:48:20.156
+COPY users (user_id, login, password, role, firstname, lastname, email, phone, address1, address2, country, state, zip, city, sex, website, interests, birthday, organization, organaddress, photo, notes, registereddt, lastvisitdt, approved, admin) FROM stdin;
+2	test-id-1	test-id-1	1	test-id-1	test-id-1				\N					\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+3	test-id-2	test-id-2	1	test-id-2	test-id-2				\N					\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+4	test-id-3	test-id-3	1	test-id-3	test-id-3	1234@yahoo.com	9798451234	Whare are you?		United States	TX	77843	College Station	F	\N	\N	2000-06-20 00:00:00	TAMU	Whare are you?	\N		2016-06-17 13:48:20.156	2016-06-17 13:48:20.156	\N	\N
+1	admin	admin	0	admin	admin	admin@mail.box	+380000000000	Lviv	\N	Ukraine	Lviv	79000	Lviv	M	\N	\N	2015-10-16 16:34:09.374	\N	\N	\N	\N	2015-10-16 16:34:09.374	2015-10-16 16:34:09.374	\N	YES
 \.
 
 
