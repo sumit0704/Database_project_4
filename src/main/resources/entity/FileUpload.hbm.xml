@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="edu.tamu.ctv.entity.FileUpload" table="fileupload" schema="public" optimistic-lock="version">
+		<id name="id" type="integer">
+			<column name="entity_id" />
+			<generator class="native">
+			</generator>
+		</id>
+		
+        <property name="project_id" type="integer">
+            <column name="project_id" not-null="true" />
+        </property>
+        <property name="filename" type="string">
+            <column name="filename" not-null="true" />
+        </property>
+        <property name="filelocation" type="string">
+            <column name="filelocation" />
+        </property>
+        <property name="registereddt" type="timestamp">
+            <column name="registereddt" length="29" not-null="true" default="current_date"/>
+        </property>
+        <property name="lastupdatedt" type="timestamp">
+            <column name="lastupdatedt" length="29" not-null="true" default="current_date"/>
+        </property>
+       <property name="createdby" type="integer">
+            <column name="createdby" length="29" not-null="true"/>
+        </property>
+        <property name="lastmodifiedby" type="integer">
+            <column name="lastmodifiedby" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>
