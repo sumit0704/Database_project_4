@@ -26,6 +26,7 @@ public class HomeController
 	
 	@RequestMapping(value = {"/", "/Open/**"}, method = RequestMethod.GET)
 	public String index(Model model)
+	
 	{
 		System.out.println("\n\nLogin @ home: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
 		String id = projectAuthentication.getCurrentUser().getLogin();
