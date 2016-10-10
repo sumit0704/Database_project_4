@@ -1,8 +1,11 @@
 package edu.tamu.ctv.utils.importdata;
 
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,8 +16,27 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.tamu.ctv.entity.*;
-import edu.tamu.ctv.repository.*;
+import edu.tamu.ctv.entity.Columnheaders;
+import edu.tamu.ctv.entity.Columntypes;
+import edu.tamu.ctv.entity.Components;
+import edu.tamu.ctv.entity.FileUpload;
+import edu.tamu.ctv.entity.Orders;
+import edu.tamu.ctv.entity.Projects;
+import edu.tamu.ctv.entity.Results;
+import edu.tamu.ctv.entity.Rowheaders;
+import edu.tamu.ctv.entity.Rowtypes;
+import edu.tamu.ctv.entity.Sequences;
+import edu.tamu.ctv.entity.Units;
+import edu.tamu.ctv.entity.Users;
+import edu.tamu.ctv.repository.ColumnHeadersRepository;
+import edu.tamu.ctv.repository.ColumnTypesRepository;
+import edu.tamu.ctv.repository.ComponentsRepository;
+import edu.tamu.ctv.repository.FileUploadRepository;
+import edu.tamu.ctv.repository.OrdersRepository;
+import edu.tamu.ctv.repository.ProjectsRepository;
+import edu.tamu.ctv.repository.ResultsRepository;
+import edu.tamu.ctv.repository.RowHeadersRepository;
+import edu.tamu.ctv.repository.SequencesRepository;
 import edu.tamu.ctv.utils.DateUtil;
 import edu.tamu.ctv.utils.importdata.toxpi.DataTransformation;
 import edu.tamu.ctv.utils.session.ProjectAuthentication;
@@ -42,7 +64,18 @@ public class ImportManager implements Runnable
 	private SequencesRepository sequencesRepository;
 	@Autowired
 	private ProjectAuthentication projectAuthentication;
+	private FileUploadRepository fileuploadrepository;
+	FileUpload lFileUpload = new FileUpload();
+    private String fileName = "";
 	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	private String fileLocation = "";
 	//TODO: Change
 	private Long projectId = 0l;
@@ -137,6 +170,22 @@ public class ImportManager implements Runnable
 
 				Users currentUser = projectAuthentication.getCurrentUser();
 				Units currentUnit = projectAuthentication.getDefaultUnit();
+				
+				this.lFileUpload = this.fileuploadrepository.findMaxIdForSave(Integer.valueOf(this.projectId.intValue()));
+                this.lFileUpload.setFilename(this.fileName);
+                this.lFileUpload.setFilelocation(this.fileLocation);
+                this.lFileUpload.setProject_id(Integer.valueOf(this.projectId.intValue()));
+                this.lFileUpload.setCreatedby(Integer.valueOf(currentUser.getId().intValue()));
+                if (this.lFileUpload.getId() != null) {
+                    int lCount = this.lFileUpload.getId();
+                    this.lFileUpload.setId(Integer.valueOf(lCount + 1));
+                } else {
+                    this.lFileUpload.setId(Integer.valueOf(1));
+                }
+                Timestamp timestamp = Timestamp.valueOf("2007-09-23 10:10:10.0");
+                this.lFileUpload.setLastupdatedt((Date)timestamp);
+                
+                this.fileuploadrepository.save(this.lFileUpload);
 				
 				_columnHeaderList = columnHeaderRepository.findByColumntypesProjectsId(projectId);
 				_rowHeaderList = rowHeaderRepository.findByRowtypesProjectsId(projectId);

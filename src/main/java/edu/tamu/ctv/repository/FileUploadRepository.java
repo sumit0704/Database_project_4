@@ -8,13 +8,7 @@ import org.springframework.stereotype.Repository;
 import edu.tamu.ctv.entity.FileUpload;
 
 @Repository
-public interface FileUploadRepository extends CrudRepository<FileUpload, Integer>
-{
-	// System.out.println("\n\nLogin @ home: ");
-	// System.out.println("test");
-	 
-	@Query("from FileUpload as fp where fp.project_id = :id")
-	FileUpload findMaxIdForSave(@Param("id")Integer id);
-
-
+public interface FileUploadRepository extends CrudRepository<FileUpload, Integer> {
+    @Query(value="from FileUpload as fp where fp.project_id = :id")
+    public FileUpload findMaxIdForSave(@Param(value="id") Integer var1);
 }

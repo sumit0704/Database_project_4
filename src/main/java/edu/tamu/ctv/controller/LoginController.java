@@ -26,7 +26,7 @@ public class LoginController
 		System.out.println("\n\nPost is here.\n\n");
 		System.out.println("\n\nLogin: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
 		ModelAndView model = new ModelAndView();
-		if (error != null)
+		if (error != null && error.trim().length()>0)
 		{
 			model.addObject("error", "Invalid username and password!");
 		}

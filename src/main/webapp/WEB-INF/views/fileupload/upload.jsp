@@ -12,10 +12,16 @@
 
 
 <body>
+<<<<<<< HEAD
 CSRF Cookie Name: ${_csrf.parameterName} <br>
 value = ${_csrf.token} <br><br>
+=======
+<h2>Upload a file:</h2>
+<br><br><br><br><br><br><br><br>
+>>>>>>> branch 'master' of https://github.com/sumit0704/Database_project_4
 
 	<div class="container">
+	
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well well-sm">

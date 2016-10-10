@@ -24,7 +24,7 @@
 	</div>
 	
 	<div class="row">
-		<label class="col-sm-2">Name</label>
+		<label class="col-sm-2">Last Name</label>
 		<div class="col-sm-10">${user.lastname}</div>
 	</div>
 	

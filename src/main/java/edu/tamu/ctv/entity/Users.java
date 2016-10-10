@@ -32,6 +32,9 @@ public class Users implements Serializable
 	private String sex;
 	private String organization;
 	private String organaddress;
+	private String approved;
+	
+
 	private byte[] photo;
 	private String notes;
 	private Date registereddt;
@@ -474,6 +477,7 @@ public class Users implements Serializable
 	{
 		this.projectmemberses = projectmemberses;
 	}
+<<<<<<< HEAD
 	
 	
 	public String getApproved()
@@ -497,5 +501,13 @@ public class Users implements Serializable
 		this.approved = admin;
 	}
 	
+=======
+	public String getApproved() {
+		return approved;
+	}
+>>>>>>> branch 'master' of https://github.com/sumit0704/Database_project_4
 
+	public void setApproved(String approved) {
+		this.approved = approved;
+	}
 }
