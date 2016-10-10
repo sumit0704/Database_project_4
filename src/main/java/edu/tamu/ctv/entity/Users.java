@@ -32,6 +32,9 @@ public class Users implements Serializable
 	private String sex;
 	private String organization;
 	private String organaddress;
+	private String approved;
+	
+
 	private byte[] photo;
 	private String notes;
 	private Date registereddt;
@@ -470,5 +473,11 @@ public class Users implements Serializable
 	{
 		this.projectmemberses = projectmemberses;
 	}
+	public String getApproved() {
+		return approved;
+	}
 
+	public void setApproved(String approved) {
+		this.approved = approved;
+	}
 }

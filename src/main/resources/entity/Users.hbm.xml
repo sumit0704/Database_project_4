@@ -81,6 +81,9 @@
         <property name="lastvisitdt" type="timestamp">
             <column name="lastvisitdt" length="29" not-null="true" />
         </property>
+        <property name="approved" type="string">
+            <column name="approved" />
+           </property> 
         <set name="resultses" table="results" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="updatedby" not-null="true" />

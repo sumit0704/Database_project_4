@@ -47,7 +47,7 @@ public class UsersService
 			user = updateEntry(user);
 		}
 		try
-		{
+		{   user.setApproved("N");
 			usersRepository.save(user);
 		}
 		catch (Exception e)
@@ -88,6 +88,7 @@ public class UsersService
 		//oldEntity.setNotes(entity.getNotes());
 		oldEntity.setRegistereddt(entity.getRegistereddt());
 		oldEntity.setLastvisitdt(ProjectAuthentication.getCurrentDate());
+		
 		
 		entity = null;
 		

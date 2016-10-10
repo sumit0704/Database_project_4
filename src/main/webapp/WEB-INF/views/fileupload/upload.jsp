@@ -12,11 +12,11 @@
 
 
 <body>
-
-CSRF Cookie Name: ${_csrf.parameterName} <br>
-value = ${_csrf.token} <br><br>
+<h2>Upload a file:</h2>
+<br><br><br><br><br><br><br><br>
 
 	<div class="container">
+	
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well well-sm">

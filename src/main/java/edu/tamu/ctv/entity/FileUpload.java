@@ -1,116 +1,101 @@
 package edu.tamu.ctv.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
+public class FileUpload
+implements Serializable {
+    private Integer id;
+    private Integer project_id;
+    private String filename;
+    private String filelocation;
+    private Integer createdby;
+    private Integer lastmodifiedby;
+    private Date registereddt;
+    private Date lastupdatedt;
 
-public class FileUpload implements java.io.Serializable
-{
-	private Integer id;
-	private Integer project_id;
-	private String filename;
-	private String filelocation;
-	private Integer createdby;
-	private Integer lastmodifiedby;
-	private Date registereddt;
-	private Date lastupdatedt;
-	
-	public Integer getProject_id() {
-		return project_id;
-	}
+    public Integer getProject_id() {
+        return this.project_id;
+    }
 
-	public FileUpload()
-	{
-	}
-	
-	public FileUpload(Integer id, Integer project_id, String filename, String filelocation, Integer createdby, Integer lastmodifiedby, Date registereddt, Date lastupdatedt)
-	{
-		this.id = id;
-		this.project_id = project_id;
-		this.filename=filename;
-		this.filelocation = filelocation;
-		this.createdby =createdby;
-		this.lastmodifiedby = lastmodifiedby;
-		this.registereddt = registereddt;
-		this.lastupdatedt = lastupdatedt;
-		
-	}
-	
-	public void setProject_id(Integer project_id) {
-		this.project_id = project_id;
-	}
+    public FileUpload() {
+    }
 
-	public String getFilename() {
-		return filename;
-	}
+    public FileUpload(Integer id, Integer project_id, String filename, String filelocation, Integer createdby, Integer lastmodifiedby, Date registereddt, Date lastupdatedt) {
+        this.id = id;
+        this.project_id = project_id;
+        this.filename = filename;
+        this.filelocation = filelocation;
+        this.createdby = createdby;
+        this.lastmodifiedby = lastmodifiedby;
+        this.registereddt = registereddt;
+        this.lastupdatedt = lastupdatedt;
+    }
 
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+    public void setProject_id(Integer project_id) {
+        this.project_id = project_id;
+    }
 
-	public String getFilelocation() {
-		return filelocation;
-	}
+    public String getFilename() {
+        return this.filename;
+    }
 
-	public void setFilelocation(String filelocation) {
-		this.filelocation = filelocation;
-	}
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
-	public boolean isNew()
-	{
-		return null == id;
-	}
-	
-	
-	public Integer getId()
-	{
-		return this.id;
-	}
+    public String getFilelocation() {
+        return this.filelocation;
+    }
 
-	public void setId(Integer id)
-	{
-		this.id = id;
-	}
+    public void setFilelocation(String filelocation) {
+        this.filelocation = filelocation;
+    }
 
-	public Integer getCreatedby()
-	{
-		return createdby;
-	}
+    public boolean isNew() {
+        if (this.id == null) {
+            return true;
+        }
+        return false;
+    }
 
-	public void setCreatedby(Integer createdby)
-	{
-		this.createdby = createdby;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public Integer getLastmodifiedby()
-	{
-		return lastmodifiedby;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setLastmodifiedby(Integer lastmodifiedby)
-	{
-		this.lastmodifiedby = lastmodifiedby;
-	}
+    public Integer getCreatedby() {
+        return this.createdby;
+    }
 
-	public Date getRegistereddt()
-	{
-		return registereddt;
-	}
+    public void setCreatedby(Integer createdby) {
+        this.createdby = createdby;
+    }
 
-	public void setRegistereddt(Date registereddt)
-	{
-		this.registereddt = registereddt;
-	}
+    public Integer getLastmodifiedby() {
+        return this.lastmodifiedby;
+    }
 
-	public Date getLastupdatedt()
-	{
-		return lastupdatedt;
-	}
+    public void setLastmodifiedby(Integer lastmodifiedby) {
+        this.lastmodifiedby = lastmodifiedby;
+    }
 
-	public void setLastupdatedt(Date lastupdatedt)
-	{
-		this.lastupdatedt = lastupdatedt;
-	}
+    public Date getRegistereddt() {
+        return this.registereddt;
+    }
 
-	
+    public void setRegistereddt(Date registereddt) {
+        this.registereddt = registereddt;
+    }
 
+    public Date getLastupdatedt() {
+        return this.lastupdatedt;
+    }
+
+    public void setLastupdatedt(Date lastupdatedt) {
+        this.lastupdatedt = lastupdatedt;
+    }
 }

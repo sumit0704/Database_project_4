@@ -9,7 +9,7 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <body>
-User_id: ${user_id}
+<h5>Logged In User: ${user_id}</h5>
 	<div class="container">
 
 		<h1>All Users</h1>
@@ -40,10 +40,9 @@ User_id: ${user_id}
 						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">Update</button>
 						<button class="btn btn-danger" onclick="this.disabled=true;post('${deleteUrl}')">Delete</button></td>
 				</tr>
-				Phone: ${user.phone}
+				
 			</c:forEach>
 		</table>
-User[2].first_name: ${user[1].firstname}
 	</div>
 
 	<jsp:include page="../fragments/footer.jsp" />
