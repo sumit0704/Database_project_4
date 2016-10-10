@@ -18,6 +18,7 @@
   
 </head>
 
+
 <body>
 <div align="right"><a href = "/database_project">
 		<img src="/database_project/scripts/images/MB__home.png"/></a>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;</div>
