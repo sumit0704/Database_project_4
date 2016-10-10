@@ -27,7 +27,6 @@ SELECT admin FROM users WHERE login = '${user_id}';
 
 value= "${result.rows[0].admin}"
 
-
 <c:choose>
   <c:when test="${administrator == 'YES'}">
 

@@ -1,0 +1,9 @@
+diff a/src/main/webapp/WEB-INF/views/Protected/ID_home.jsp b/src/main/webapp/WEB-INF/views/Protected/ID_home.jsp	(rejected hunks)
+@@ -27,6 +27,7 @@
+ 
+ value= "${result.rows[0].admin}"
+ 
++
+ <c:choose>
+   <c:when test="${administrator == 'YES'}">
+ 
