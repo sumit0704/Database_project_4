@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<div ><a href = "/database_project/home" >
+<div align="right"><a href = "/database_project">
 		<img src="/database_project/scripts/images/MB__home.png"/></a>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;</div>
 <div class="main" style="background-image: url('/database_project/scripts/images/about.jpg')">
 
@@ -31,8 +31,8 @@
 
     <div class="container">
         
-            <br><br><br><br><br><h2><font face="Grand Hotel" size="6" color="brown" >Who we are?</font></h2>
-            <br><font face="Grand Hotel" size="5" color="brown" >This web site is part of the New Technologies to 
+            <br><br><br><br><br><br><br><br><h2><font face="Grand Hotel" size="6" >Who we are?</font></h2>
+            <br><font face="Grand Hotel" size="5" >This web site is part of the New Technologies to 
 		Underpin Category Approaches and Read-across in Regulatory Programmes at Texas A&M University.
 		One of the most challenging areas in regulatory toxicology is the assessment of UVCBs 
 		(Unknown or Variable composition, Complex reaction products and Biological materials). 
