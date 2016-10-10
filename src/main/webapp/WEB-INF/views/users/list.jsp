@@ -7,7 +7,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <jsp:include page="../fragments/header.jsp" />
 
@@ -54,6 +54,7 @@ User_id: ${user_id}
 					<td>${user.firstname}</td>
 					<td>${user.lastname}</td>
 					<td>${user.email}</td>
+					<td>User/<font color=blue>Change</font></td>
 					<td>
 						<spring:url value="/users/${user.id}" var="userUrl" />
 						<spring:url value="/users/delete/${user.id}" var="deleteUrl" /> 
@@ -75,6 +76,30 @@ Users[0].lastname: ${users[0].lastname}
     Insufficient authorization to see this page.  
   </c:otherwise>
 </c:choose> <!-- end of if YES administrator -->
+
+
+<!-- Start of a new query. -->
+<sql:update dataSource="${snapshot}" var="result2">
+UPDATE users SET approved = 'Yes' WHERE login = 'admin';;
+</sql:update>
+
+
+<c:set var="administrator2" value="${result.rows[0].admin}"/>
+
+
+<script type='text/javascript'>
+
+$('#emf_selection').on('change', function() {
+	emf_YN = $('#emf_selection').val();
+   	alert('emf_YN = ' + emf_YN); 
+});
+
+
+</script>
+
+
+
+
 <br>
 	<jsp:include page="../fragments/footer.jsp" />
 
