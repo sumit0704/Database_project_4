@@ -1,4 +1,9 @@
+<%@ page import="edu.tamu.ctv.controller.ID_HomeController"%>
 <%@ page session="false"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -6,12 +11,33 @@
 <html lang="en">
 <jsp:include page="../fragments/header.jsp" />
 <link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
+
+
 <body>
+<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     user="postgres"  password="postgres"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT admin FROM users WHERE login = '${user_id}';
+</sql:query>
+
+<c:set var="administrator" value="${result.rows[0].admin}"/>
+<spring:url value="/users" var="urlListUser" />
+
+value= "${result.rows[0].admin}"
+
+<c:choose>
+  <c:when test="${administrator == 'YES'}">
+
+   <p><a href="${urlListUser}">List Users and Applicants</a><p>
+ </c:when>  
+</c:choose> <!-- end of if YES administrator -->
+
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/import" var="urlImport" />
 <spring:url value="/export" var="urlExport" />
 <spring:url value="/analysis/${projectId}" var="urlDisplayAnalysis" />
-
 
     <div class="container">
 
@@ -93,6 +119,10 @@
             </div>
         </div>
     </div>
+    
+
+<br>
+
 <jsp:include page="../fragments/footer.jsp" />
 
 </body>

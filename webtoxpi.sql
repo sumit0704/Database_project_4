@@ -1064,7 +1064,7 @@ COPY users (user_id, login, password, role, firstname, lastname, email, phone, a
 2	test-id-1	test-id-1	1	test-id-1	test-id-1				\N					\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 3	test-id-2	test-id-2	1	test-id-2	test-id-2				\N					\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 4	test-id-3	test-id-3	1	test-id-3	test-id-3	1234@yahoo.com	9798451234	Whare are you?		United States	TX	77843	College Station	F	\N	\N	2000-06-20 00:00:00	TAMU	Whare are you?	\N		2016-06-17 13:48:20.156	2016-06-17 13:48:20.156	\N	\N
-1	admin	admin	0	admin	admin	admin@mail.box	+380000000000	Lviv	\N	Ukraine	Lviv	79000	Lviv	M	\N	\N	2015-10-16 16:34:09.374	\N	\N	\N	\N	2015-10-16 16:34:09.374	2015-10-16 16:34:09.374	\N	YES
+1	admin	admin	0	admin	admin	admin@mail.box	+380000000000	Lviv	\N	Ukraine	Lviv	79000	Lviv	M	\N	\N	2015-10-16 16:34:09.374	\N	\N	\N	\N	2015-10-16 16:34:09.374	2015-10-16 16:34:09.374	Yes	YES
 \.
 
 

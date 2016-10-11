@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -14,14 +15,28 @@
 
 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
 	<a href = "/database_project/Open/Publ2016" target = _blank>
-		Publication 2016</a>
+		Publication 2016 Chemicals</a>
 
 
 
 	<h2>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
 Crude Oil Processing</h2>
 <br></br>
-
-<img src="/database_project/img/Figure_1.jpg" alt="Crude Oil processing" height="440" width="750" >
+	Image size: 
+	<font color ="blue"><b id="small">Small</b>, <b id="medium">Medium</b>, <b id="large">Large</b>.<br></br>
+	</font>
+<script>
+$(document).ready(function(){
+    $("#small").hover(function(){$('#CrudeOil-image').height(200); });
+    $("#medium").hover(function(){$('#CrudeOil-image').height(500); });
+    $("#large").hover(function(){$('#CrudeOil-image').height(800); });
+});
+</script>	
+<img src="/database_project/img/Crude-Oil.jpg" alt="Crude Oil processing" id = "CrudeOil-image" 
+	height="240"><br></br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	Selection of petroleum substances for bioactivity profiling. Petroleum substances for bioactivity profiling comprised a total of 21 petroleum
+substances from five product classes, five straight run gas oils (SRGO), nine vacuum & hydrotreated gas oils (VHGO), two other gas oils (OGO), three
+heavy fuel oils (HFO), and two residual aromatic extracts (RAE).
+..
 </body>
 </html>

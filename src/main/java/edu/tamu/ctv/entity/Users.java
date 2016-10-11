@@ -33,13 +33,12 @@ public class Users implements Serializable
 	private String organization;
 	private String organaddress;
 	private String approved;
-	
 
 	private byte[] photo;
 	private String notes;
 	private Date registereddt;
 	private Date lastvisitdt;
-	private String approved;
+
 	private String admin;
 	private Set<Results> resultses = new HashSet<Results>(0);
 	private Set<Importinfo> importinfos = new HashSet<Importinfo>(0);
@@ -477,7 +476,6 @@ public class Users implements Serializable
 	{
 		this.projectmemberses = projectmemberses;
 	}
-<<<<<<< HEAD
 	
 	
 	public String getApproved()
@@ -499,15 +497,5 @@ public class Users implements Serializable
 	public void setAdmin(String admin)
 	{
 		this.approved = admin;
-	}
-	
-=======
-	public String getApproved() {
-		return approved;
-	}
->>>>>>> branch 'master' of https://github.com/sumit0704/Database_project_4
-
-	public void setApproved(String approved) {
-		this.approved = approved;
 	}
 }

@@ -13,13 +13,19 @@ public class AboutController
 {
 	private final Logger logger = LoggerFactory.getLogger(AboutController.class);
 	@RequestMapping(value = {"/about", "/Open/about"}, method = RequestMethod.GET)
-	public ModelAndView about(Model model)
+	public String showAbout(Model model)
 	{
-		ModelAndView model1 = new ModelAndView();
 		logger.debug("index()");
-		model1.setViewName("/Open/about");
-		return model1;
-		// return "home";
+		return "/Open/about";
 	}
+	
+	// public ModelAndView about(Model model)
+	// {
+		// ModelAndView model1 = new ModelAndView();
+		// logger.debug("index()");
+		// model1.setViewName("/Open/about");
+		// return model1;
+		// return "/Open/about";
+	// }
 	
 }
