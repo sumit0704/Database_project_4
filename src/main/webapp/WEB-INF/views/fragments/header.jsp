@@ -77,7 +77,7 @@
 				
 			<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
      url="jdbc:postgresql://localhost:5432/webtoxpi"
-     user="postgres"  password="root"/>
+     user="postgres"  password="postgres"/>
  
 	<sql:query dataSource="${snapshot}" var="result">
 SELECT login FROM users WHERE login = '${user_id}';
