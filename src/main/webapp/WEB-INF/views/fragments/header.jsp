@@ -1,5 +1,10 @@
+<%@ page session="false"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
@@ -29,6 +34,11 @@
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/contact" var="urlContact" />
 
+
+
+
+
+
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -47,16 +57,11 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				
-			<li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="${urlListUser}">List</a></li>
-                <li><a href="${urlAddUser}">Add User</a></li>
-              </ul>
-            </li>
+			<li><a href="${urlHome}">Home</a></li>
 			<li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                
                 <li><a href="${urlListProject}">List</a></li>
                 <li><a href="${urlAddProject}">Add Project</a></li>
               </ul>
@@ -68,8 +73,30 @@
 				<li class="active"><a href="${urlDisplayAnalysis}">Analysis</a></li>
 				
 				<li class="active"><a href="${urlContact}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>	
-				<li class="active"><a href="${urlProfile}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> My Page</a></li>			
-				<li class="not-active"><a id="proj">Selected project: ${currentProjectCode}</a></li>	
+				<li class="active"><a href="${urlUsers}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> My Page</a></li>			
+				
+			<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     user="postgres"  password="root"/>
+ 
+	<sql:query dataSource="${snapshot}" var="result">
+SELECT login FROM users WHERE login = '${user_id}';
+</sql:query>
+
+<c:set var="administrator" value="${result.rows[0].login}"/>
+<spring:url value="/approval" var="urlUserList" />
+
+	
+
+				<c:choose>
+ 				<c:when test="${administrator == 'admin'}">
+
+   				<li class="active"><a href="${urlUserList}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User details</a></li>
+ 				</c:when>  
+				</c:choose> <!-- end of if YES administrator --> 
+				<!-- 
+				<li class="not-active"><a id="proj">Selected project: ${currentProjectCode}</a></li> -->
+				<li class="active"><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out</a></li>	
 			</ul>
 		</div>
 	</div>
