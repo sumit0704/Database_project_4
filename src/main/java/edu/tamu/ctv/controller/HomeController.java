@@ -30,7 +30,7 @@ public class HomeController
 	{
 		System.out.println("\n\nLogin @ home: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
 		String id = projectAuthentication.getCurrentUser().getLogin();
-
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		
 		
 		logger.debug("index()");
@@ -38,9 +38,19 @@ public class HomeController
 		// return "home";
 	}
 	
+	/*@RequestMapping(value ="/about", method = RequestMethod.GET)
+	public String showAbout(Model model)
+	
+	{
+		logger.debug("index()");
+		return "/Open/about";
+		// return "home";
+	}*/
+	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public String showContact(Model model)
 	{
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		logger.debug("index()");
 		return "/contact";
 	}
@@ -48,6 +58,7 @@ public class HomeController
 	@RequestMapping(value = "/contact", method = RequestMethod.POST)
 	public String sendMessage(@ModelAttribute("contactForm") @Validated ContactForm contactForm, BindingResult result, Model model, final RedirectAttributes redirectAttributes)
 	{
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		logger.debug("sendMessage() : {}", contactForm);
 
 		if (result.hasErrors())

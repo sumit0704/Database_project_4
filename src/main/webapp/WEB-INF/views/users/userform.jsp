@@ -6,16 +6,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="../fragments/header.jsp" />
-
+<link href="/database_project/scripts/external/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <script src="/database_project/scripts/external/ckeditor/ckeditor.js"></script>
 
-
-<div class="container">
+<body>
+<div class="container" >
 
 	<c:choose>
 		<c:when test="${userForm['new']}">
-			<h1>User Form</h1>
+			<h1>New User Registration </h1>
 		</c:when>
 		<c:otherwise>
 			<h1>Update User</h1>

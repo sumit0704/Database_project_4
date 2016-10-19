@@ -1,4 +1,4 @@
-<!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -36,13 +36,13 @@
       <ul class="nav navbar-nav">
          <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                <img src="/database_project/scripts/images/MB__home.png"/"/>
+                <img src="/database_project/scripts/images/MB__home.png"/>
                 Home 
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><a href=""><img src="/database_project/scripts/images/MB__home.png"/> Home</a></li>
-                <li><a href="About"><img src="/database_project/scripts/images/forum-icon-11.png"/>About</a></li>
+                <li><a href="about"><img src="/database_project/scripts/images/forum-icon-11.png"/>About</a></li>
                 <li><a href="login"><img src="/database_project/scripts/images/CustomerConnectionLoginLogo.png"/> Login</a></li>
                 <li><a href="users/add"><img src="/database_project/scripts/images/adduser.png"/> Request Access</a></li>
               </ul>

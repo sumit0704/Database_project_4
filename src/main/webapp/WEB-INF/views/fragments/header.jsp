@@ -77,7 +77,7 @@
 				
 			<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
      url="jdbc:postgresql://localhost:5432/webtoxpi"
-     user="postgres"  password="postgres"/>
+     user="postgres"  password="root"/>
  
 	<sql:query dataSource="${snapshot}" var="result">
 SELECT login FROM users WHERE login = '${user_id}';
@@ -88,12 +88,12 @@ SELECT login FROM users WHERE login = '${user_id}';
 
 	
 
-				<c:choose>
- 				<c:when test="${administrator == 'admin'}">
+				<%-- <c:choose>
+ 				<c:when test="${administrator == 'admin'}"> --%>
 
-   				<li class="active"><a href="${urlUserList}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User details</a></li>
- 				</c:when>  
-				</c:choose> <!-- end of if YES administrator --> 
+   				<li class="active"><a href="${urlUserList}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Admin</a></li>
+ 			<%-- 	</c:when>  --%> 
+				<%-- </c:choose> --%> <!-- end of if YES administrator --> 
 				<!-- 
 				<li class="not-active"><a id="proj">Selected project: ${currentProjectCode}</a></li> -->
 				<li class="active"><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out</a></li>	
