@@ -33,6 +33,24 @@ public class Projects implements java.io.Serializable
 	private Set<Components> componentses = new HashSet<Components>(0);
 	private Set<Columntypes> columntypeses = new HashSet<Columntypes>(0);
 	private Set<Results> resultses = new HashSet<Results>(0);
+	private Set<ProjectUserMapping> projectusermapping = new HashSet<ProjectUserMapping>(0);
+	private Set<FileUpload> fileupload = new HashSet<FileUpload>(0);
+
+	public Set<FileUpload> getFileupload() {
+		return fileupload;
+	}
+
+	public void setFileupload(Set<FileUpload> fileupload) {
+		this.fileupload = fileupload;
+	}
+
+	public Set<ProjectUserMapping> getProjectusermapping() {
+		return projectusermapping;
+	}
+
+	public void setProjectusermapping(Set<ProjectUserMapping> projectusermapping) {
+		this.projectusermapping = projectusermapping;
+	}
 
 	public Projects()
 	{

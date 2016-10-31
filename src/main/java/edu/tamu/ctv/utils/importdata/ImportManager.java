@@ -64,6 +64,7 @@ public class ImportManager implements Runnable
 	private SequencesRepository sequencesRepository;
 	@Autowired
 	private ProjectAuthentication projectAuthentication;
+	@Autowired
 	private FileUploadRepository fileuploadrepository;
 	FileUpload lFileUpload = new FileUpload();
     private String fileName = "";
@@ -171,19 +172,14 @@ public class ImportManager implements Runnable
 				Users currentUser = projectAuthentication.getCurrentUser();
 				Units currentUnit = projectAuthentication.getDefaultUnit();
 				
-				this.lFileUpload = this.fileuploadrepository.findMaxIdForSave(Integer.valueOf(this.projectId.intValue()));
+				Integer lFileUploadId=  this.fileuploadrepository.findMaxIdForSave();
+				lFileUploadId=lFileUploadId+1;
                 this.lFileUpload.setFilename(this.fileName);
                 this.lFileUpload.setFilelocation(this.fileLocation);
-                this.lFileUpload.setProject_id(Integer.valueOf(this.projectId.intValue()));
+                this.lFileUpload.setProject_id(this.projectId);
                 this.lFileUpload.setCreatedby(Integer.valueOf(currentUser.getId().intValue()));
-                if (this.lFileUpload.getId() != null) {
-                    int lCount = this.lFileUpload.getId();
-                    this.lFileUpload.setId(Integer.valueOf(lCount + 1));
-                } else {
-                    this.lFileUpload.setId(Integer.valueOf(1));
-                }
-                Timestamp timestamp = Timestamp.valueOf("2007-09-23 10:10:10.0");
-                this.lFileUpload.setLastupdatedt((Date)timestamp);
+                this.lFileUpload.setId(lFileUploadId);
+                this.lFileUpload.setRegistereddt(ProjectAuthentication.getCurrentDate());
                 
                 this.fileuploadrepository.save(this.lFileUpload);
 				
