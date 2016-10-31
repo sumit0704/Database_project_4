@@ -1,7 +1,10 @@
 package edu.tamu.ctv.controller;
 
 import java.beans.PropertyEditorSupport;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,15 +29,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.tamu.ctv.entity.ProjectUserMapping;
 import edu.tamu.ctv.entity.Projects;
 import edu.tamu.ctv.entity.Projecttypes;
 import edu.tamu.ctv.entity.Users;
 import edu.tamu.ctv.entity.enums.Access;
 import edu.tamu.ctv.entity.enums.Status;
+import edu.tamu.ctv.repository.FileUploadRepository;
 import edu.tamu.ctv.repository.ProjectTypesRepository;
 import edu.tamu.ctv.repository.ProjectsRepository;
 import edu.tamu.ctv.repository.UsersRepository;
 import edu.tamu.ctv.service.ProjectService;
+import edu.tamu.ctv.service.ProjectUserMappingService;
 import edu.tamu.ctv.service.validator.ProjectFormValidator;
 
 @Controller
@@ -56,6 +62,11 @@ public class ProjectController
 
 	@Autowired
 	private UsersRepository userRepository;
+	@Autowired
+	private FileUploadRepository uploadRepository;
+	
+	@Autowired
+	private ProjectUserMappingService mappingservice;
 	
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
 	public String showAllProjects(Model model)
@@ -69,7 +80,7 @@ public class ProjectController
 	public String saveOrUpdateProject(@ModelAttribute("projectForm") @Validated Projects project, BindingResult result, Model model, final RedirectAttributes redirectAttributes)
 	{
 		logger.debug("saveOrUpdateProject() : {}", project);
-
+		
 		if (result.hasErrors())
 		{
 			populateDefaultModel(model, project);
@@ -88,6 +99,38 @@ public class ProjectController
 			}
 		
 			projectService.save(project);
+			Set<Users>lListofProjectReviewers=new HashSet<Users>(0);
+			if(project.getProjectreviewerses()!=null){
+				lListofProjectReviewers=project.getProjectreviewerses();
+			}
+			Iterator<Users> iter =lListofProjectReviewers.iterator();
+			while(iter.hasNext()){
+				ProjectUserMapping projectmapentity = new ProjectUserMapping();
+				projectmapentity.setProject_id(project.getId().intValue());
+				projectmapentity.setRole(3);
+				projectmapentity.setIs_active('Y');
+				projectmapentity.setUser_id(iter.next().getId().intValue());
+				mappingservice.save(projectmapentity);
+			}
+			Set<Users>lListofProjectMembers=new HashSet<Users>(0);
+			if(project.getProjectmemberses()!=null){
+				lListofProjectMembers=project.getProjectmemberses();
+			}
+			Iterator<Users> iter1 =lListofProjectMembers.iterator();
+			while(iter1.hasNext()){
+				ProjectUserMapping projectmapentity = new ProjectUserMapping();
+				projectmapentity.setProject_id(project.getId().intValue());
+				projectmapentity.setRole(2);
+				projectmapentity.setIs_active('Y');
+				projectmapentity.setUser_id(iter1.next().getId().intValue());
+				mappingservice.save(projectmapentity);
+			}
+			
+			ProjectUserMapping projectmapentity = new ProjectUserMapping();
+			projectmapentity.setProject_id(project.getId().intValue());
+			projectmapentity.setRole(1);
+			projectmapentity.setIs_active('Y');
+			mappingservice.save(projectmapentity);
 
 			return "redirect:/projects/" + project.getId();
 		}
@@ -204,6 +247,11 @@ public class ProjectController
 		model.addAttribute("projectTypesCache", (List<Projecttypes>) projectTypesRepository.findAll());
 		model.addAttribute("accessList", Access.values());
 		model.addAttribute("statusList", Status.values());
+		if(project.getId()!=null){
+				model.addAttribute("fileListcache",uploadRepository.findFilesById(project.getId()));
+				
+			
+		}
 	}
 
 	@InitBinder

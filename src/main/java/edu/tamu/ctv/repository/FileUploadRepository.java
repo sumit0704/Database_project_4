@@ -1,5 +1,7 @@
 package edu.tamu.ctv.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +11,9 @@ import edu.tamu.ctv.entity.FileUpload;
 
 @Repository
 public interface FileUploadRepository extends CrudRepository<FileUpload, Integer> {
-    @Query(value="from FileUpload as fp where fp.project_id = :id")
-    public FileUpload findMaxIdForSave(@Param(value="id") Integer var1);
+    @Query(value="select max(id) as id from FileUpload")
+    public Integer findMaxIdForSave();
+    
+    @Query(value="select filename from FileUpload where project_id=:id")
+    public List<String> findFilesById(@Param(value="id") Long var1);
 }

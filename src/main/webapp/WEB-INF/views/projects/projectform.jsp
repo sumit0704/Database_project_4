@@ -21,7 +21,7 @@
 
 	<c:choose>
 		<c:when test="${projectForm['new']}">
-			<h1>Add Project</h1>
+			<h1>Create Project</h1>
 		</c:when>
 		<c:otherwise>
 			<h1>Update Project</h1>
@@ -38,9 +38,9 @@
 		<spring:bind path="code">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Code</label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
 					<form:input path="code" type="text" class="form-control "
-						id="firstName" placeholder="Project Code" />
+						id="code" placeholder="Project Code" />
 					<form:errors path="code" class="control-label" />
 				</div>
 			</div>
@@ -49,9 +49,9 @@
 		<spring:bind path="name">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Project Name</label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
 					<form:input path="name" type="text" class="form-control "
-						id="firstName" placeholder="Project Name" />
+						id="name" placeholder="Project Name" />
 					<form:errors path="name" class="control-label" />
 				</div>
 			</div>
@@ -107,7 +107,7 @@
 		<spring:bind path="notes">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Project Description</label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
 					<form:textarea path="notes" rows="5" class="form-control" id="ckeditornotes" placeholder="Description" />
 					<form:errors path="notes" class="control-label" />
 				</div>
@@ -116,10 +116,10 @@
 		<script type="text/javascript">CKEDITOR.replace('ckeditornotes');</script>
 
 
- 		<spring:bind path="projectmanagerses">
+ 		<%-- <spring:bind path="projectmanagerses">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Project Managers</label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
 					<form:select multiple="true" path="projectmanagerses" class="form-control">
 						<c:forEach items="${usersCache}" var="user">
 			                <c:set var="isSelected" value="false" />
@@ -141,12 +141,14 @@
 				</div>
 				<div class="col-sm-5"></div>
 			</div>
-		</spring:bind> 
+		</spring:bind>  --%>
+		<c:choose>
+					<c:when test="${projectForm['new']}">
 
 		<spring:bind path="projectreviewerses">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Project Reviewers</label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
 					<form:select multiple="true" path="projectreviewerses" class="form-control">
 						<c:forEach items="${usersCache}" var="user">
 			                <c:set var="isSelected" value="false" />
@@ -169,11 +171,15 @@
 				<div class="col-sm-5"></div>
 			</div>
 		</spring:bind>
+		</c:when>
+		</c:choose>
 		
+		<c:choose>
+					<c:when test="${projectForm['new']}">
 		<spring:bind path="projectmemberses">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">Project Members</label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
 					<form:select multiple="true" path="projectmemberses" class="form-control">
 						<c:forEach items="${usersCache}" var="user">
 			                <c:set var="isSelected" value="false" />
@@ -196,6 +202,39 @@
 				<div class="col-sm-5"></div>
 			</div>
 		</spring:bind>
+		</c:when>
+		</c:choose>
+		
+		<c:choose>
+					<c:when test="${projectForm['new']}">
+					</c:when>
+					<c:otherwise>
+		<spring:bind path="fileupload">
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Uploaded Files</label>
+				<div class="col-sm-5">
+					<form:select multiple="true" path="fileupload" class="form-control">
+						<%-- <c:forEach items="${fileListcache}" var="file">
+			                <c:forEach items="${fileListcache.filename}" var="pm">
+			                    
+			                </c:forEach>
+			                <c:choose>
+			                    <c:when test="${isSelected}">
+			                        <option value="${file.id}" selected="selected">${file.filename}</option>
+			                    </c:when>
+			                    <c:otherwise>
+			                        <option value="${file.id}">${file.filename}</option>
+			                    </c:otherwise>
+			                </c:choose>
+						</c:forEach> --%>
+						<form:options items="${fileListcache}"/>
+					</form:select>
+				</div>
+				<div class="col-sm-5"></div>
+			</div>
+		</spring:bind>
+		</c:otherwise>
+		</c:choose>
 
 		<script type="text/javascript">
 			function select2function(selectObject, desc) {
@@ -206,20 +245,22 @@
 						});
 			};
 
-			select2function($("#projectmanagerses"), "managers");
+			/* select2function($("#projectmanagerses"), "managers"); */
 			select2function($("#projectreviewerses"), "reviewers");
 			select2function($("#projectmemberses"), "members");
+			//select2function($("#fileupload"), "uploadedfiles");
 		</script>
 
 
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-sm-offset-2 col-sm-5">
 				<c:choose>
 					<c:when test="${projectForm['new']}">
 						<button type="submit" class="btn-lg btn-primary pull-right">Add</button>
 					</c:when>
 					<c:otherwise>
-						<button type="submit" class="btn-lg btn-primary pull-right">Update</button>
+						<button type="submit" class="btn-lg btn-primary pull-right">Update Values</button>
+						<button class="btn btn-danger" onclick="this.disabled=true;post('${deleteUrl}')">Delete Files</button>
 					</c:otherwise>
 				</c:choose>
 			</div>
