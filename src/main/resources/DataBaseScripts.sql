@@ -33,6 +33,30 @@ INSERT INTO USERROLES (CODE, NAME, NOTES) VALUES ('MANAGER', 'Manager', '');
 INSERT INTO USERROLES (CODE, NAME, NOTES) VALUES ('MEMBER', 'Member', '');
 INSERT INTO USERROLES (CODE, NAME, NOTES) VALUES ('VIEWER', 'Viewer', '');
 
+CREATE TABLE fileupload
+(
+  entity_id integer NOT NULL DEFAULT nextval('fileupload_entity_id_seq'::regclass),
+  project_id bigint NOT NULL,
+  filename text NOT NULL,
+  filelocation text NOT NULL,
+  createdby integer NOT NULL,
+  lastmodifiedby integer,
+  registereddt timestamp without time zone NOT NULL DEFAULT ('now'::text)::date,
+  lastupdatedt timestamp without time zone DEFAULT ('now'::text)::date,
+  CONSTRAINT fileupload_pkey PRIMARY KEY (entity_id)
+);
+
+CREATE TABLE projectusermapping
+(
+  id integer NOT NULL,
+  user_id integer NOT NULL,
+  project_id integer NOT NULL,
+  "role" integer NOT NULL,
+  registereddt timestamp without time zone,
+  lastvisitdt timestamp without time zone,
+  is_active character(1) NOT NULL
+);
+
 
 CREATE TABLE PROJECTTYPES 
     (ID SERIAL PRIMARY KEY,
@@ -210,3 +234,14 @@ END;
 $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER T_RESULTS AFTER INSERT OR UPDATE OR DELETE ON RESULTS FOR EACH ROW EXECUTE PROCEDURE RESULT_CHANGES_HISTORY();
+alter table users add column approved varchar(2) default null;
+
+CREATE TABLE projectusermapping
+(
+  user_id bigint NOT NULL,
+  project_id bigint NOT NULL,
+  "role" integer NOT NULL,
+  registereddt timestamp without time zone,
+  lastvisitdt timestamp without time zone
+  );
+  alter table projectusermapping add column is_ative varchar not null;
