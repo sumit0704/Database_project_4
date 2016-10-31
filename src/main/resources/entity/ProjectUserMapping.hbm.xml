@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 5, 2015 1:43:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="edu.tamu.ctv.entity.ProjectUserMapping" table="projectusermapping" schema="public" optimistic-lock="version">
+		<id name="id" type="integer">
+			<column name="id" />
+			
+		</id>
+         <property name="user_id" type="integer">
+            <column name="user_id" not-null="true"  />
+        </property>
+        <property name="project_id" type="integer">
+            <column name="project_id" not-null="true" />
+        </property>
+        <property name="role" type="integer">
+			<column name="role" not-null="true" />
+		</property>
+		<property name="registereddt" type="timestamp">
+			<column name="registereddt" not-null="true" />
+		</property>
+		<property name="lastvisitdt" type="timestamp">
+			<column name="lastvisitdt" not-null="true" />
+		</property>
+        <property name="is_active" type="character">
+			<column name="is_active" not-null="true" />
+		</property>
+           
+    </class>
+</hibernate-mapping>
