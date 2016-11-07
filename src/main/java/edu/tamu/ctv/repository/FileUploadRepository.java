@@ -16,4 +16,7 @@ public interface FileUploadRepository extends CrudRepository<FileUpload, Integer
     
     @Query(value="select filename from FileUpload where project_id=:id")
     public List<String> findFilesById(@Param(value="id") Long var1);
+    
+    @Query(value="select filename from FileUpload where project_id=:id")
+    public List<FileUpload> findFilesByIds(@Param(value="id") Long var1);
 }

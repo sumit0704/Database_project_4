@@ -15,7 +15,25 @@ public class ProjectUserMapping implements java.io.Serializable
 	private Integer role;
 	private char is_active;
 	private Date registereddt;
+	public char getApproved() {
+		return approved;
+	}
+
+	public void setApproved(char approved) {
+		this.approved = approved;
+	}
+
+	public Date getApprovaldat() {
+		return approvaldat;
+	}
+
+	public void setApprovaldat(Date approvaldat) {
+		this.approvaldat = approvaldat;
+	}
+
 	private Date lastvisitdt;
+	private char approved;
+	private Date approvaldat;
 	
 	public ProjectUserMapping()
 	{
@@ -64,6 +82,7 @@ public class ProjectUserMapping implements java.io.Serializable
 	public void setIs_active(char is_active) {
 		this.is_active = is_active;
 	}
+	
 
 	public Date getRegistereddt() {
 		return registereddt;

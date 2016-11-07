@@ -245,3 +245,18 @@ CREATE TABLE projectusermapping
   lastvisitdt timestamp without time zone
   );
   alter table projectusermapping add column is_ative varchar not null;
+  alter table projectusermapping add column approved character(1) default null;
+  alter table projectusermapping add column approvaldat timestamp default null;
+  
+  CREATE TABLE projectaccess
+(
+  id bigint NOT NULL,
+  project_id integer NOT NULL,
+  user_id integer NOT NULL,
+  "read" character(1) DEFAULT NULL::bpchar,
+  "write" character(1) DEFAULT NULL::bpchar,
+  is_active character(1) DEFAULT NULL::bpchar,
+  createddt timestamp without time zone,
+  lastupdateddat timestamp without time zone,
+  CONSTRAINT id_pkey PRIMARY KEY (id)
+)

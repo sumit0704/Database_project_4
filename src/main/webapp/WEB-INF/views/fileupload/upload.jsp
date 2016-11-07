@@ -27,7 +27,7 @@
 							
 							<div class="form-group">
 								<label class="col-sm-2 control-label">File to upload:</label>
-								<div class="col-sm-10">
+								<div class="col-sm-5">
 									<input type="file" accept=".csv,text/csv,.pdf,.docx,.jpeg,.png" name="file" class="form-control"  placeholder="File to upload" />
 								</div>
                         	</div>

@@ -6,7 +6,7 @@ import java.util.Date;
 public class FileUpload
 implements Serializable {
     private Integer id;
-    private Integer project_id;
+    private Long project_id;
     private String filename;
     private String filelocation;
     private Integer createdby;
@@ -14,14 +14,14 @@ implements Serializable {
     private Date registereddt;
     private Date lastupdatedt;
 
-    public Integer getProject_id() {
+    public Long getProject_id() {
         return this.project_id;
     }
 
     public FileUpload() {
     }
 
-    public FileUpload(Integer id, Integer project_id, String filename, String filelocation, Integer createdby, Integer lastmodifiedby, Date registereddt, Date lastupdatedt) {
+    public FileUpload(Integer id, Long project_id, String filename, String filelocation, Integer createdby, Integer lastmodifiedby, Date registereddt, Date lastupdatedt) {
         this.id = id;
         this.project_id = project_id;
         this.filename = filename;
@@ -32,7 +32,7 @@ implements Serializable {
         this.lastupdatedt = lastupdatedt;
     }
 
-    public void setProject_id(Integer project_id) {
+    public void setProject_id(Long project_id) {
         this.project_id = project_id;
     }
 

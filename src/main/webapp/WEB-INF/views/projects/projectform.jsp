@@ -227,7 +227,7 @@
 			                    </c:otherwise>
 			                </c:choose>
 						</c:forEach> --%>
-						<form:options items="${fileListcache}"/>
+						<form:options items="${fileListcache}" var="fp"/>
 					</form:select>
 				</div>
 				<div class="col-sm-5"></div>
@@ -251,7 +251,9 @@
 			//select2function($("#fileupload"), "uploadedfiles");
 		</script>
 
-
+	<%
+	String valueSelected = request.getParameter("fp");
+	%>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-5">
 				<c:choose>
@@ -260,7 +262,8 @@
 					</c:when>
 					<c:otherwise>
 						<button type="submit" class="btn-lg btn-primary pull-right">Update Values</button>
-						<button class="btn btn-danger" onclick="this.disabled=true;post('${deleteUrl}')">Delete Files</button>
+						<spring:url value="/projects/deletefile/${project.id}/<%=valueSelected %>" var="deleteurl" />
+						<button class="btn btn-danger" onclick="this.disabled=true;post('${deleteurl}')">Delete Files</button>
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.tamu.ctv.entity.FileUpload;
+import edu.tamu.ctv.entity.ProjectAccess;
 import edu.tamu.ctv.entity.ProjectUserMapping;
 import edu.tamu.ctv.entity.Projects;
 import edu.tamu.ctv.entity.Projecttypes;
@@ -36,12 +38,15 @@ import edu.tamu.ctv.entity.Users;
 import edu.tamu.ctv.entity.enums.Access;
 import edu.tamu.ctv.entity.enums.Status;
 import edu.tamu.ctv.repository.FileUploadRepository;
+import edu.tamu.ctv.repository.ProjectAccessRepository;
 import edu.tamu.ctv.repository.ProjectTypesRepository;
+import edu.tamu.ctv.repository.ProjectUserMappingRepository;
 import edu.tamu.ctv.repository.ProjectsRepository;
 import edu.tamu.ctv.repository.UsersRepository;
 import edu.tamu.ctv.service.ProjectService;
 import edu.tamu.ctv.service.ProjectUserMappingService;
 import edu.tamu.ctv.service.validator.ProjectFormValidator;
+import edu.tamu.ctv.utils.session.ProjectAuthentication;
 
 @Controller
 public class ProjectController
@@ -59,6 +64,12 @@ public class ProjectController
 
 	@Autowired
 	private ProjectTypesRepository projectTypesRepository;
+	
+	@Autowired
+	private ProjectAccessRepository projectAccessRepository;
+	
+	@Autowired
+	private ProjectUserMappingRepository mappingRepository;
 
 	@Autowired
 	private UsersRepository userRepository;
@@ -68,12 +79,36 @@ public class ProjectController
 	@Autowired
 	private ProjectUserMappingService mappingservice;
 	
+	@Autowired
+	private ProjectAuthentication projectAuthentication;
+	
+	@Autowired
+	private FileUploadRepository fileuploadrepository;
+	
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	public String requestProjects(Model model)
+	{
+		logger.debug("showAllProjects()");
+		model.addAttribute("projects", projectRepository.findAll());
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		return "projects/viewProject";
+	}
+	@RequestMapping(value = "/projects/request", method = RequestMethod.GET)
 	public String showAllProjects(Model model)
 	{
 		logger.debug("showAllProjects()");
 		model.addAttribute("projects", projectRepository.findAll());
-		return "projects/list";
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		return "projects/projectRequest";
+	}
+	
+	@RequestMapping(value = "/projects/requested", method = RequestMethod.GET)
+	public String showRequestedProjects(Model model)
+	{
+		logger.debug("showRequestedProjects()");
+		model.addAttribute("projects", projectRepository.findAll());
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		return "projects/requestedProject";
 	}
 
 	@RequestMapping(value = "/projects", method = RequestMethod.POST)
@@ -239,6 +274,100 @@ public class ProjectController
 		}
 		return "projects/show";
 	}
+	
+	@RequestMapping(value = "/projects/view/{id}", method = RequestMethod.GET)
+	public String grantViewAccess(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
+	{
+		Projects project = projectRepository.findOne(id);
+		ProjectUserMapping lMapping =mappingRepository.findmapbyProjectandUserID(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId", id);
+		session.setAttribute("currentProjectCode", project.getCode());
+		if(lMapping.getId()!=null){
+			ProjectAccess lProjAccess =new ProjectAccess();
+			lProjAccess=projectAccessRepository.findAccess(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
+			if(lProjAccess!=null && lProjAccess.getId()!=null && lProjAccess.getRead()!=' ' && lProjAccess.getRead()=='Y' ){
+				redirectAttributes.addFlashAttribute("Access Granted Successfully");
+			}
+			if(lProjAccess!=null){
+				
+			}else{
+				lProjAccess =new ProjectAccess();
+				
+			}
+			lProjAccess.setProject_id(id.intValue());
+			lProjAccess.setUser_id(projectAuthentication.getCurrentUser().getId().intValue());
+			lProjAccess.setRead('Y');
+			lProjAccess.setWrite('N');
+			lProjAccess.setIs_Active('Y');
+//			//lProjAccess.setCreateddt(ProjectAuthentication.getCurrentDate());
+			projectAccessRepository.save(lProjAccess);
+			redirectAttributes.addFlashAttribute("css", "success");
+			redirectAttributes.addFlashAttribute("msg","Access Granted Successfully");
+		}
+		return "redirect:/projects/"+id;
+	}
+	@RequestMapping(value = "/projects/updateaccess/{id}", method = RequestMethod.GET)
+	public String grantUpdateAccess(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
+	{
+		Projects project = projectRepository.findOne(id);
+		ProjectUserMapping lMapping =mappingRepository.findmapbyProjectandUserID(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId", id);
+		session.setAttribute("currentProjectCode", project.getCode());
+		if(lMapping.getId()!=null){
+			
+			ProjectAccess lProjAccess =new ProjectAccess();
+			lProjAccess=projectAccessRepository.findAccess(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
+			if(lProjAccess!=null && lProjAccess.getId()!=null && lProjAccess.getWrite()!=' ' && lProjAccess.getWrite()=='Y'){
+				redirectAttributes.addFlashAttribute("Access Granted Successfully");
+			}
+			if(lProjAccess!=null){
+				
+			}else{
+				lProjAccess =new ProjectAccess();
+				
+			}
+			lProjAccess.setProject_id(id.intValue());
+			lProjAccess.setUser_id(projectAuthentication.getCurrentUser().getId().intValue());
+			lProjAccess.setRead('Y');
+			lProjAccess.setWrite('Y');
+			lProjAccess.setIs_Active('Y');
+//			//lProjAccess.setCreateddt(ProjectAuthentication.getCurrentDate());
+			projectAccessRepository.save(lProjAccess);
+			redirectAttributes.addFlashAttribute("css", "success");
+			redirectAttributes.addFlashAttribute("msg","Access Granted Successfully");
+		}
+		return "redirect:/projects/"+id;
+	}
+	@RequestMapping(value = "/projects/revokeaccess/{id}", method = RequestMethod.GET)
+	public String revokeAccess(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request)
+	{
+		
+		ProjectAccess lAccess =projectAccessRepository.findAccess(id.intValue(), projectAuthentication.getCurrentUser().getId().intValue());
+		lAccess.setIs_Active('N');
+			projectAccessRepository.save(lAccess);
+		
+		return "Access Revoked Successfully";
+	}
+	
+	@RequestMapping(value = "/projects/deletefile/{id}/{filename}", method = RequestMethod.GET)
+	public String deleteFile(@PathVariable("id") Long id,@PathVariable("filename") String[] filename, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request)
+	{
+		
+		List<FileUpload> lUpload =fileuploadrepository.findFilesByIds(id);
+		
+		for(int i=0;i<filename.length;i++){
+			for(int j=0;j<lUpload.size();j++){
+				if(lUpload.get(j).equals(filename[i])){
+					fileuploadrepository.delete(lUpload.get(j));
+				}
+			}
+		}
+		
+		return "File Deleted Successfully";
+	}
+
 
 	private void populateDefaultModel(Model model, Projects project)
 	{
