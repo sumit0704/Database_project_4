@@ -10,12 +10,13 @@
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <title>Web ToxPi</title>
 
-<link href="/database_project/scripts/external/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script> 
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
 
+<link href="/database_project/scripts/external/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="shortcut icon" href="/database_project/img/favicon.png" type="image/x-icon" sizes="64x64">
 </head>
 
@@ -24,8 +25,9 @@
 <spring:url value="/users" var="urlListUser" />
 <spring:url value="/users/add" var="urlAddUser" />
 
-<spring:url value="/projects" var="urlListProject" />
+<spring:url value="/projects" var="urlViewProject" />
 <spring:url value="/projects/add" var="urlAddProject" />
+<spring:url value="/projects/request" var="urlRequestProject" />
 
 <spring:url value="/import" var="urlImport" />
 <spring:url value="/export" var="urlExport" />
@@ -33,7 +35,8 @@
 <spring:url value="/analysis/${projectId}" var="urlDisplayAnalysis" />
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/contact" var="urlContact" />
-
+<spring:url value="/approval" var="urlUserList" />
+<spring:url value="/compoundSearch" var="compoundSearch" />
 
 
 
@@ -59,11 +62,13 @@
 				
 			<li><a href="${urlHome}">Home</a></li>
 			<li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project <span class="caret"></span></a>
+              <a href="${urlViewProject}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 
-                <li><a href="${urlListProject}">List</a></li>
-                <li><a href="${urlAddProject}">Add Project</a></li>
+                <!-- <li><a href="${urlListProject}">View project</a></li> -->
+                <li><a href="${urlViewProject}">View Project</a></li> 
+                <li><a href="${urlAddProject}">Create Project</a></li> 
+                <li><a href="${urlRequestProject}">Request project access</a></li>
               </ul>
             </li>	
 				
@@ -84,16 +89,17 @@ SELECT login FROM users WHERE login = '${user_id}';
 </sql:query>
 
 <c:set var="administrator" value="${result.rows[0].login}"/>
-<spring:url value="/approval" var="urlUserList" />
+<!--<spring:url value="/approval" var="urlUserList" />-->
 
 	
 
-				<%-- <c:choose>
- 				<c:when test="${administrator == 'admin'}"> --%>
+				<c:choose>
+ 				<c:when test="${administrator == 'admin'}">
 
    				<li class="active"><a href="${urlUserList}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Admin</a></li>
- 			<%-- 	</c:when>  --%> 
-				<%-- </c:choose> --%> <!-- end of if YES administrator --> 
+   				<li class="active"><a href="${compoundSearch}">Compound search</a></li>
+ 				</c:when>  
+				</c:choose> <!-- end of if YES administrator --> 
 				<!-- 
 				<li class="not-active"><a id="proj">Selected project: ${currentProjectCode}</a></li> -->
 				<li class="active"><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign out</a></li>	
