@@ -2,12 +2,13 @@ package edu.tamu.ctv.entity.enums;
 
 public enum Access
 {
-	PRIVATE(0, "Private"),
-	PROTECTED(1, "Protected"),
-	REGISTEREDREAD(2, "For registered users (readonly)"),
+	/*PRIVATE(0, "Private"),*/
+	PUBLIC	(1, "Public"),
+	PROTECTED(2, "Protected");
+	/*REGISTEREDREAD(2, "For registered users (readonly)"),
 	REGISTEREDEDIT(3, "For registered users (allow edit)"),
 	PUBLICREAD(4, "Public (readonly)"),
-	PUBLICEDIT(5, "Public (allow edit)");
+	PUBLICEDIT(5, "Public (allow edit)");*/
 
 	private int id;
 	private String value;

@@ -9,7 +9,7 @@
 <link href="/database_project/scripts/external/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <script src="/database_project/scripts/external/ckeditor/ckeditor.js"></script>
 
-<body>
+<body style="background-image: url('/database_project/scripts/images/useradd.jpg')">
 <div class="container" >
 
 	<c:choose>

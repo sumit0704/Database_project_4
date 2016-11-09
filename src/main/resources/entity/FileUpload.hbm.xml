@@ -10,7 +10,7 @@
 			</generator>
 		</id>
 		
-        <property name="project_id" type="integer">
+        <property name="project_id" type="long">
             <column name="project_id" not-null="true" />
         </property>
         <property name="filename" type="string">

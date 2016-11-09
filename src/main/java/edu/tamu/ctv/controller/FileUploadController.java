@@ -1,10 +1,9 @@
  package edu.tamu.ctv.controller;
 
-import edu.tamu.ctv.utils.importdata.ImportManager;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import edu.tamu.ctv.utils.importdata.ImportManager;
 
 @Controller
 public class FileUploadController {
@@ -96,7 +97,7 @@ public class FileUploadController {
         if (!lFlag) {
             return "redirect:/upload?projectId=" + projectId;
         }
-        return "redirect:/projects/select/" + projectId;
+        return "redirect:/projects/" + projectId;
     }
 
     @RequestMapping(value={"/uploadMultipleFile"}, method={RequestMethod.POST})

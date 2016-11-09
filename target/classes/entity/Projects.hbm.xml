@@ -53,15 +53,21 @@
         <property name="version" type="long">
             <column name="version" not-null="true" />
         </property>
-        <set name="projectmanagerses" table="projectmanagers" inverse="false" lazy="true" fetch="select" cascade="none">
+        <set name="projectusermapping" table="projectusermapping" inverse="false" lazy="true" fetch="select" cascade="none">
             <key>
             	<column name="project_id" />
             </key>
-            <many-to-many class="edu.tamu.ctv.entity.Users">
-                <column name="user_id"/>
-            </many-to-many>
+             <one-to-many class="edu.tamu.ctv.entity.ProjectUserMapping" />
         </set>
-        <set name="projectreviewerses" table="projectreviewers" inverse="false" lazy="true" fetch="select" cascade="none">
+        
+        <set name="fileupload" table="fileupload" inverse="false" lazy="true" fetch="select" cascade="none">
+            <key>
+            	<column name="project_id" />
+            </key>
+            <one-to-many class="edu.tamu.ctv.entity.FileUpload" />
+           
+        </set>
+        <!-- <set name="projectreviewerses" table="projectreviewers" inverse="false" lazy="true" fetch="select" cascade="none">
             <key>
             	<column name="project_id" />
             </key>
@@ -76,7 +82,7 @@
             <many-to-many class="edu.tamu.ctv.entity.Users">
                 <column name="user_id"/>
             </many-to-many>
-        </set> 
+        </set>  -->
 
         <set name="rowtypeses" table="rowtypes" inverse="true" lazy="true" fetch="select" cascade="all">
             <key>

@@ -3,7 +3,10 @@ package edu.tamu.ctv.entity.enums;
 public enum Roles
 {
 	ADMIN(0, "Admin"),
-	USER(1, "User"),
+	USER(1,"User"),
+	PROJECTMANAGER(2, "Project Manager"),
+	TEAMMEMBER(3, "Team Member"),
+	PROJECTREVIEWER(4, "Project Reviewer"),
 	UNREGISTERER(100, "Unregistered");
 
 	private int id;

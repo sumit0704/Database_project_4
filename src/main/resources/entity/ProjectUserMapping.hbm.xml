@@ -26,6 +26,12 @@
         <property name="is_active" type="character">
 			<column name="is_active" not-null="true" />
 		</property>
+		<property name="approved" type="character">
+			<column name="approved" not-null="true" />
+		</property>
+		<property name="approvaldat" type="timestamp">
+			<column name="approvaldat" not-null="true" />
+		</property>
            
     </class>
 </hibernate-mapping>
