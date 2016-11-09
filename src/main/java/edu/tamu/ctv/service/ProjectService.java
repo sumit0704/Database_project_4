@@ -64,6 +64,7 @@ public class ProjectService
 	{
 		Projects oldEntity = projectRepository.findOne(entity.getId());
 		
+		//oldEntity.setCode(entity.getCode());
 		oldEntity.setName(entity.getName());
 		oldEntity.setAccess(entity.getAccess());
 		oldEntity.setStatus(entity.getStatus());

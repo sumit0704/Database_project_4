@@ -27,29 +27,39 @@ table, th, td {
 
 
 <br>
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
-&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
-2016 Publication 
+<h1>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
+2016 Publication </h1><br>
 
 
-	<br><br>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<br> &nbsp;	&nbsp;	&nbsp;	
 	<a href = "/database_project" target = _blank>
-		Back to Home Page</a>
+		Back to Home Page</a>|
 
-	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
-	<a href = "/database_project/Open/CrudeOil"
-		target = _blank>
-		Crude Oil Processing</a>
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<a href = "/database_project/Open/CrudeOil"	target = _blank>Crude Oil Processing</a>
+	
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<a href = "/database_project/Open/Publ2016/Toxpies?Fig_name=Bio"	target = _blank>Bioactivities</a>
 
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<a href = "/database_project/Open/Publ2016/Toxpies?Fig_name=Chemo"	target = _blank>Volatility</a>
+	
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<a href = "/database_project/Open/Publ2016/Toxpies?Fig_name=BioChemo"	target = _blank>BioChemo</a>
 
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<a href = "/database_project/Open/Publ2016/Toxpies?Fig_name=Gene-exp"	target = _blank>Gene Expression</a>
 
-	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
 	<a href = "http://pubs.rsc.org/en/content/articlelanding/2016/gc/c6gc01147k#!divAbstract"
 		target = _blank>
 		2016 Journal Paper</a>
-<br><br><br><br><br>
+<br><br><br><br>
 
-
+&nbsp;	&nbsp;	&nbsp;	For more detail please check: Grimm FA, ... I Rusyn, 2016. A chemical-Biological similarity-based grouping of complex 
+substances as a prototype approch for evaluating chemical alternatives. Green Chem., 18, 4407 
+<br></br>
 Table 1 Chemical-biological data-based grouping of petroleum substances in ToxPi
 
 <table style="width:80%">
@@ -81,7 +91,6 @@ Table 1 Chemical-biological data-based grouping of petroleum substances in ToxPi
 <div class="cas64741-43-1" onmouseover="bigImg(this)" onmouseout="normalImg(this)" ></div>
 SRGO for Straight Run Gas Oil. OGS for Other Gas Oil. VHGO for Vacuum & Hydrotreated Gas Oil. 
 RAE for Residual Aromatic Extract. HFO for Heavy Fuel Oil. 
-Here is <a href="/database_project/Open/CrudeOil">a crude oil processing diagram.</a>
 	
 <script>
 function bigImg(x) {

@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../fragments/header.jsp" />
-<link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" /> -->
 
 
 <body>
@@ -34,6 +34,27 @@ value= "${result.rows[0].login}"
    <p><a href="${urlListUser}">List Users and Applicants</a><p>
  </c:when>  
 </c:choose> <!-- end of if YES administrator --> 
+<!-- 
+<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     user="postgres"  password="root"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT admin FROM users WHERE login = '${user_id}';
+</sql:query>
+
+<c:set var="administrator" value="${result.rows[0].admin}"/>
+<spring:url value="/users" var="urlListUser" />
+
+value= "${result.rows[0].admin}"
+
+<c:choose>
+  <c:when test="${administrator == 'YES'}">
+
+   <p><a href="${urlListUser}">List Users and Applicants</a><p>
+ </c:when>  
+</c:choose> <!-- end of if YES administrator -->
+
 
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/import" var="urlImport" />

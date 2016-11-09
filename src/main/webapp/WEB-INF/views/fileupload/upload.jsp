@@ -12,8 +12,13 @@
 
 
 <body>
+<<<<<<< HEAD
+CSRF Cookie Name: ${_csrf.parameterName} <br>
+value = ${_csrf.token} <br><br>
+=======
 <h2>Upload a file:</h2>
 <br><br><br><br><br><br><br><br>
+>>>>>>> branch 'master' of https://github.com/sumit0704/Database_project_4
 
 	<div class="container">
 	
@@ -29,6 +34,7 @@
 								<label class="col-sm-2 control-label">File to upload:</label>
 								<div class="col-sm-5">
 									<input type="file" accept=".csv,text/csv,.pdf,.docx,.jpeg,.png" name="file" class="form-control"  placeholder="File to upload" />
+
 								</div>
                         	</div>
 

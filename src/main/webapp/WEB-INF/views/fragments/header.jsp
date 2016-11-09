@@ -4,8 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <head>
+
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <title>Web ToxPi</title>
@@ -36,7 +37,12 @@
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/contact" var="urlContact" />
 <spring:url value="/approval" var="urlUserList" />
+<spring:url value="../Protected/ID_home" var="urlUsers" />
 <spring:url value="/compoundSearch" var="compoundSearch" />
+
+
+
+
 
 
 
@@ -74,16 +80,14 @@
               </ul>
             </li>	
 				
-				<li class="active"><a href="${urlImport}">Import</a></li>
-				<li class="active"><a href="${urlExport}">Export</a></li>
-				
-				<li class="active"><a href="${urlDisplayAnalysis}">Analysis</a></li>
-				
 				<li class="active"><a href="${urlContact}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact</a></li>	
 				<li class="active"><a href="${urlUsers}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> My Page</a></li>			
 				
 			<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+
      url="jdbc:postgresql://localhost:5432/webtoxpi"
+
+
      user="postgres"  password="root"/>
  
 	<sql:query dataSource="${snapshot}" var="result">
@@ -91,15 +95,22 @@ SELECT login FROM users WHERE login = '${user_id}';
 </sql:query>
 
 <c:set var="administrator" value="${result.rows[0].login}"/>
-<!--<spring:url value="/approval" var="urlUserList" />-->
+
+
+<spring:url value="/approval" var="urlUserList" />
+
 
 	
 
 				<c:choose>
  				<c:when test="${administrator == 'admin'}">
 
+
    				<li class="active"><a href="${urlUserList}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Admin</a></li>
    				<li class="active"><a href="${compoundSearch}">Compound search</a></li>
+
+   				
+
  				</c:when>  
 				</c:choose> <!-- end of if YES administrator --> 
 				<!-- 

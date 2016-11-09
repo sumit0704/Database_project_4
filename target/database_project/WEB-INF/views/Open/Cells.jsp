@@ -5,7 +5,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <title>Insert title here</title>
+
+<% 
+String Category = (String)request.getAttribute("Category"); 
+String Cells = (String)request.getAttribute("Cells"); 
+String x = "";
+String y = "";
+String h = "";
+
+if( Cells.equals( "Cardio" ) )
+	x = "-100px";
+else if( Cells.equals( "Hepa" ) )
+	x = "-720px";
+
+
+if(Category.equals( "SRGO" ))
+    	y = "-150px";
+else if(Category.equals( "VHGO" ))
+    	y = "-620px";
+else if(Category.equals( "OGO" ))
+	y = "-1180px";
+else if(Category.equals( "HFO" ))
+	y = "-1650px";
+else if(Category.equals( "RAE" ))
+	y = "-2115px";
+
+if(Category.equals( "VHGO" ))
+	h = "570px";
+else h = "450px";
+%>
+<%--
+else if( mOption.equals( "FP" ) )
+{
+           if(muser_id != pt1.getCollected_By())
+             mFlag = 1;
+}
+else if( mOption.equals( "CUSTOMER" ) )
+{
+           if(mCustomer != pt1.getCustomer_Id())
+               mFlag = 1;
+}
+--%>
 
 <style>
 
@@ -13,23 +55,20 @@
 #img {
     background-image: url(/database_project/img/Cells.jpg);
     background-repeat: no-repeat;
-    background-position: -100px -150px; /* Visible coordinates in image */
-    height: 450px; /* Visible height */
+    background-position: <%= x %> <%= y %>; /* Start of Visible coordinates in image */
+    height: <%= h %>; /* Visible height */
     width: 600px; /* Visible width */
     display: inline-block; 
 }
 
 </style>
 
-
-
-
-
 </head>
 <body>
-	<br><br>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
-	<a href = "/database_project" target = _blank>
-		Back to Home Page</a>
+
+	<br></br>
+&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<a href = "/database_project" target = _blank>Back Home Page</a>
 
 	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
 	<a href = "/database_project/Open/Publ2016" target = _blank>
@@ -38,19 +77,35 @@
 
 
 	<h2>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
-Cells</h2>
-<br></br>
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;
+<% 
+String methods = "";
+if( Cells.equals( "Cardio" ) ){
+	out.print("Cardiomyocytes");
+	methods = "&nbsp;	&nbsp;	&nbsp;	&nbsp;iCell cardiomyocytes, which are induced pluripotent " +
+		"stem cells, were treated with " +
+		"the petroleum substances listed above and the intensity of the fluorescence was video " +
+		"recorded.  The beats per minute (BPM) were read from the fluorescent intensity variation. "+
+		"DMSO was the solvent, The final concentrationof DMSO in assay wells following addition of " +
+		"test substances was 1% (v/v), an amount of DMSO consistent with previous reports "+
+		"which by itself had no effect on cardiomyocyte- or hepatocyte-derived phenotypes. " + 
+		"Data points represent means of duplicate determinations (n = 2)";	
+}
+else if( Cells.equals( "Hepa" ) ){
+	out.print("Hepatocytes");
+    methods = "&nbsp;	&nbsp;	&nbsp;	&nbsp;iCell hepatocytes, which are induced pluripotent stem " + 
+		"cells,  were treated with the " +
+		"petroleum substances listed above, and the cell viability was recorded. For more detail " + 
+    	"please check the publication. DMSO was the solvent, The final concentrationof DMSO in assay " + 
+		"wells following addition of test substances was 1% (v/v), an amount of DMSO consistent with " + 
+    	"previous reports which by itself had no effect on cardiomyocyte- or hepatocyte-derived " +
+		"phenotypes. Data points represent means of duplicate determinations (n = 2)";		
+}
+%>
+</h2>
 &nbsp;	&nbsp;	&nbsp;&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	<div id="img"></div>
 <br></br>
-Cardiomyocytes were treated with the chemicals listed above, and the intensity of the 
-fluorescence was video recorded. The beats per minute were read from the fluorescent intensity variation.
-<br>${Cells}</br>
-${Sample}<br />
-<%! int day = 3; %> 
-<% if (day == 1 | day == 7) { %>
-      <p> Today is weekend</p>
-<% } else { %>
-      <p> Today is not weekend</p>
-<% } %>
+<%=methods %>
+<br><br></br>
 </body>
 </html>
