@@ -90,7 +90,7 @@ public class ProjectController
 	{
 		logger.debug("showAllProjects()");
 		model.addAttribute("projects", projectRepository.findAll());
-		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getId());
 		return "projects/viewProject";
 	}
 	@RequestMapping(value = "/projects/request", method = RequestMethod.GET)
@@ -197,6 +197,7 @@ public class ProjectController
 			model.addAttribute("msg", "Project not found");
 		}
 		model.addAttribute("project", project);
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getId());
 
 		return "projects/show";
 
@@ -261,6 +262,8 @@ public class ProjectController
 		session.setAttribute("currentProjectCode", project.getCode());
 
 		model.addAttribute("projectForm", project);
+		model.addAttribute("select",true);
+		populateDefaultModel(model, project);
 		if (TODOAction != null)
 		{
 			if (TODOAction.equals("import"))
@@ -272,7 +275,7 @@ public class ProjectController
 				return "redirect:/export/" + id;
 			}
 		}
-		return "projects/show";
+		return "projects/projectform";
 	}
 	
 	@RequestMapping(value = "/projects/view/{id}", method = RequestMethod.GET)
@@ -304,6 +307,42 @@ public class ProjectController
 			projectAccessRepository.save(lProjAccess);
 			redirectAttributes.addFlashAttribute("css", "success");
 			redirectAttributes.addFlashAttribute("msg","Access Granted Successfully");
+		}
+		return "redirect:/projects/"+id;
+	}
+	@RequestMapping(value = "/projects/approve/{id}", method = RequestMethod.GET)
+	public String approveRequest(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
+	{
+		Projects project = projectRepository.findOne(id);
+		ProjectUserMapping lMapping =mappingRepository.findmapbyProjectandUserIDapprove(id.intValue());
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId", id);
+		session.setAttribute("currentProjectCode", project.getCode());
+		if(lMapping.getId()!=null){
+			lMapping.setApproved('Y');
+			lMapping.setApprovaldat(ProjectAuthentication.getCurrentDate());
+//			//lProjAccess.setCreateddt(ProjectAuthentication.getCurrentDate());
+			mappingRepository.save(lMapping);
+			redirectAttributes.addFlashAttribute("css", "success");
+			redirectAttributes.addFlashAttribute("msg","Request approved successfully.");
+		}
+		return "redirect:/projects/"+id;
+	}
+	@RequestMapping(value = "/projects/reject/{id}", method = RequestMethod.GET)
+	public String rejectRequest(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
+	{
+		Projects project = projectRepository.findOne(id);
+		ProjectUserMapping lMapping =mappingRepository.findmapbyProjectandUserIDapprove(id.intValue());
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId", id);
+		session.setAttribute("currentProjectCode", project.getCode());
+		if(lMapping.getId()!=null){
+			lMapping.setApproved('N');
+			lMapping.setApprovaldat(ProjectAuthentication.getCurrentDate());
+//			//lProjAccess.setCreateddt(ProjectAuthentication.getCurrentDate());
+			mappingRepository.save(lMapping);
+			redirectAttributes.addFlashAttribute("css", "success");
+			redirectAttributes.addFlashAttribute("msg","Request rejected successfully.");
 		}
 		return "redirect:/projects/"+id;
 	}

@@ -35,6 +35,7 @@ margin-right: 20px;
     margin-top: 40px; /* define margin as you see fit */
     
 }
+
   .scrollDiv{
 	max-height:800px;
     overflow-y:scroll;
@@ -77,9 +78,10 @@ margin-right: 20px;
 <div class="container scrollDiv" id="searchable-container" style="margin-top: 10 px;width: 70%">
 
 <div class="row well well-sm">
-    	<div class="col-sm-2 col-md-2 col-lg-2">Serial no</div>
-    	<div class="col-sm-4 col-md-4 col-lg-4">Project code</div>
-    	<div class="col-sm-4 col-md-4 col-lg-4">Project name</div>
+    	<div class="col-sm-2 col-md-2 col-lg-2"><b>Serial no</b></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><b>Project code</b></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><b>Project name</b></div>
+    	<c:set var="user_id"  value="${user_id}"/>
        	
     </div>
 
@@ -108,11 +110,12 @@ con1 = java.sql.DriverManager.getConnection(url1, id1, pass1);
 cnfex.printStackTrace();
 
 }
-String sql1 = "select a.code,a.name,b.role,b.project_id From projects a join projectusermapping b on a.project_id=b.project_id and b.user_id=1 and b.role=1";
+String sql1 = "select a.code,a.name,b.role,b.project_id From projects a join projectusermapping b on a.project_id=b.project_id and b.user_id=? and b.role=1";
 int countRequest=0;
 try{
-s1 = con1.createStatement();
-rs1 = s1.executeQuery(sql1);
+	pst1 = con1.prepareStatement(sql1);
+	pst1.setLong(1,Long.valueOf(pageContext.getAttribute("user_id").toString()));
+	rs1=pst1.executeQuery();
 %>
 <%
 if (!rs1.isBeforeFirst() ) { 
@@ -165,7 +168,95 @@ if(con1!=null)
 </div>
 
 <div class="col-sm-12 col-md-12 col-lg-12" id="protectedProjects" style="display: none">
-Demo2
+<div class="container scrollDiv" id="searchable-container" style="margin-top: 10 px;width: 70%">
+
+<div class="row well well-sm">
+    	<div class="col-sm-2 col-md-2 col-lg-2"><b>Serial no</b></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><b>Project code</b></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><b>Project name</b></div>
+    	<c:set var="user_id"  value="${user_id}"/>
+       	
+    </div>
+
+  <% 
+
+java.sql.Connection con2;
+java.sql.Statement s2;
+java.sql.ResultSet rs2;
+java.sql.PreparedStatement pst2;
+
+con2=null;
+s2=null;
+pst2=null;
+rs2=null;
+String url2= 
+"jdbc:postgresql://localhost:5432/webtoxpi";
+String id2= "postgres";
+String pass2 = "root";
+try{
+	
+
+	Class.forName("org.postgresql.Driver").newInstance();
+con1 = java.sql.DriverManager.getConnection(url2, id2, pass2);
+
+} catch(ClassNotFoundException cnfex){
+cnfex.printStackTrace();
+
+}
+String sql2 = "select a.code,a.name,b.role,b.project_id From projects a join projectusermapping b on a.project_id=b.project_id and b.user_id=? and b.role in (2,3) and b.approved='Y'";
+int countRequest1=0;
+try{
+	pst2 = con1.prepareStatement(sql2);
+	pst2.setLong(1,Long.valueOf(pageContext.getAttribute("user_id").toString()));
+	rs2=pst2.executeQuery();
+%>
+<%
+if (!rs2.isBeforeFirst() ) { 
+	countRequest1=0;
+%>
+<div class="row well well-sm">
+
+<h2 style="margin-left:30% "><b>No data to display</b></h2>	
+<input type="hidden" id="countRequest" value="<%=countRequest%>" />
+</div>
+<%
+}
+else{
+	int count=0;
+while( rs2.next() ){
+	count++;
+%>
+
+    <div class="row well well-sm">
+    	<div class="col-sm-2 col-md-2 col-lg-2"><%=count %></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><a href="<%= request.getContextPath()%>/projects/<%=rs2.getInt("project_id")%>"><%=rs2.getString("code") %></a></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><a href="<%= request.getContextPath()%>/projects/<%=rs2.getInt("project_id")%>"><%=rs2.getString("name") %></a></div>
+       	
+    </div>
+    
+
+      <%
+      countRequest1++;
+}
+%>
+<input type="hidden" id="countRequest" value="<%=countRequest1%>"/>
+<%
+
+} 
+}
+catch(Exception e){e.printStackTrace();}
+finally{
+if(rs2!=null) 
+	rs2.close();
+if(s2!=null) 
+	s2.close();
+if(con2!=null) 
+	con2.close();
+}
+
+%>
+
+</div>
 </div>
 
 

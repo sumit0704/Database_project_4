@@ -13,6 +13,8 @@ public interface ProjectUserMappingRepository extends CrudRepository<ProjectUser
    ProjectUserMapping findmapbyId(Integer Id);
     @Query(value="from ProjectUserMapping as fp where fp.project_id = :projectId and fp.user_id=:userId")
    ProjectUserMapping findmapbyProjectandUserID(@Param(value="projectId") Integer projectId, @Param(value="userId") Integer userId);
+    @Query(value="from ProjectUserMapping as fp where fp.project_id = :projectId  and fp.role in (2,3)")
+    ProjectUserMapping findmapbyProjectandUserIDapprove(@Param(value="projectId") Integer projectId);
     @Query(value="select max(id) from ProjectUserMapping")
    Integer findMaxId(Integer Id);
    

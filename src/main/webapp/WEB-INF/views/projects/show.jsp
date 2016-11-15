@@ -21,15 +21,17 @@
 		<label class="col-sm-2">Name</label>
 		<div class="col-sm-10">${project.name}</div>
 	</div>
-	
+
+	<spring:url value="/projects/select/${project.id}" var="selecturl" />
+	<button data-toggle="tooltip" class="btn btn-primary" id="select" onclick="location.href='${selecturl}'" title="View" style="float: right;"><span class="glyphicon glyphicon-edit"></span> View</button>
 	<spring:url value="/projects/update/${project.id}" var="updateUrl" />
-	<button data-toggle="tooltip" class="btn btn-primary" onclick="location.href='${updateUrl}'" title="Edit" style="float: right;"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+	<button data-toggle="tooltip" class="btn btn-primary" id="Edit" onclick="location.href='${updateUrl}'" title="Edit" style="float: right;"><span class="glyphicon glyphicon-edit"></span> Edit</button>
 	<spring:url value="/upload?projectId=${project.id}" var="importActionUrl" />
-	<button data-toggle="tooltip" class="btn btn-primary" onclick="location.href='${importActionUrl}'" title="Upload Files" style="float: right;"><span class="glyphicon glyphicon-upload"></span> Upload Files</button>
+	<button data-toggle="tooltip" class="btn btn-primary" id="Upload" onclick="location.href='${importActionUrl}'" title="Upload Files" style="float: right;"><span class="glyphicon glyphicon-upload"></span> Upload Files</button>
 	
 </div>
 
-<div class="container">
+<div  id="access" class="container">
 <div class="row">
 		<label class="col-sm-2">==========================================================================================================================================</label>
 
@@ -46,12 +48,13 @@
       	<p style="color:blue;"><b>Request Date</b></p>
       	</div>
       	<div class = "col-sm-3 col-md-3 col-lg-3">
+      	<p style="color:blue;"><b>Requested Role</b></p>
+      	</div>
+      	<div id="namediv" class = "col-sm-3 col-md-3 col-lg-3">
       	<p style="color:blue;"><b>Grant Access</b></p>
       	</div>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<p style="color:blue;"><b>Existing Access(R/W)</b></p>
-      	</div>
       	<c:set var="project_id"  value="${project.id}"/>
+      	<c:set var="user_id"  value="${user_id}"/>
       	<% 
 
 java.sql.Connection con1;
@@ -77,7 +80,7 @@ con1 = java.sql.DriverManager.getConnection(url1, id1, pass1);
 cnfex.printStackTrace();
 
 }
-String sql1 = "select b.firstname,a.registereddt,a.project_id,concat(c.read,'/',c.write) as existing,a.is_Active  From projectusermapping a join users b on a.user_id=b.user_id   left join projectaccess c on a.project_id=c.project_id and a.user_id=c.user_id where  a.project_id=?" ;
+String sql1 = "select b.firstname,a.registereddt,a.project_id,a.is_Active,a.role,a.approved,b.user_id  From projectusermapping a join users b on a.user_id=b.user_id  where  a.project_id=? and a.role in (2,3)" ;
 int countRequest=0;
 try{
 pst1 = con1.prepareStatement(sql1);
@@ -98,6 +101,9 @@ if (!rs1.isBeforeFirst() ) {
 else{
 	int count=0;
 	String value="";
+	String userrole="";
+	
+	
 while( rs1.next() ){
 	count++;
 %>
@@ -108,13 +114,52 @@ while( rs1.next() ){
       <div class = "col-sm-3 col-md-3 col-lg-3">
       	<%=rs1.getString("registereddt") %>
       	</div>
+      	<% if (rs1.getInt("role")==1) {
+      		userrole=" Project Member";
+      	}else{
+      		userrole=" Project Reviewer";
+      	}
+      	%>
+      	
       	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<spring:url value="/projects/view/${project.id}" var="viewaccessurl" />
+      	<%=userrole %>
+      	</div>
+      	
+      	<div class = "col-sm-3 col-md-3 col-lg-3">
+      	<% if(Long.valueOf(pageContext.getAttribute("user_id").toString()).equals(rs1.getLong("user_id")) && (rs1.getInt("role")==2 || rs1.getInt("role")==3)) { %>
+      	
+      		<script type="text/javascript">
+		  function hidediv(){
+			  document.getElementById("access").style.display = "none";
+			  document.getElementById("Edit").style.display = "none";
+			  document.getElementById("Upload").style.display = "none";
+		  }
+		  hidediv();
+		</script>
+      	<% } else{ %>
+      	
+      	<% } %>
+     
+      	 <% if (rs1.getString("approved")!=null && rs1.getString("approved").charAt(0)=='Y') { %><spring:url value="/projects/view/${project.id}" var="viewaccessurl" />
    		<button class="btn btn-info" onclick="location.href='${viewaccessurl}'">View</button>
    		<spring:url value="/projects/updateaccess/${project.id}" var="updateaccess" />
 		<button class="btn btn-primary" onclick="location.href='${updateaccess}'">Update</button>
 		<spring:url value="/projects/revokeaccess/${project.id}" var="revokeaccess" />
-		<button class="btn btn-danger" onclick="location.href='${revokeaccess}'">Revoke</button>
+		<button class="btn btn-danger" onclick="location.href='${revokeaccess}'">Revoke</button> <% }else { %>
+		<script type="text/javascript">
+		  function changedivname(){
+			  document.getElementById("namediv").innerHTML="<b>Action</b>";
+			  document.getElementById("namediv").style.color="blue";
+			  document.getElementById("namediv").className = "col-sm-3 col-md-3 col-lg-3";
+			  
+		  }
+		  changedivname();
+		</script>
+		<spring:url value="/projects/approve/${project.id}" var="approveurl" />
+   		<button class="btn btn-info" onclick="location.href='${approveurl}'">Approve</button>
+   		<spring:url value="/projects/reject/${project.id}" var="rejecturl" />
+		<button class="btn btn-primary" onclick="location.href='${rejecturl}'">Reject</button>
+		<%} %>
       	</div>
       	<% if (rs1.getString("is_Active")=="N") {
       		value="Access Revoked";
