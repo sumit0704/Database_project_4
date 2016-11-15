@@ -249,6 +249,7 @@ public class ProjectController
 	{
 		model.addAttribute("todoaction", TODOAction);
 		model.addAttribute("projects", projectRepository.findAll());
+		
 		return "projects/select";
 	}
 	
