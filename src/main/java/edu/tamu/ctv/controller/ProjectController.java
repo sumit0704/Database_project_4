@@ -249,8 +249,7 @@ public class ProjectController
 	{
 		model.addAttribute("todoaction", TODOAction);
 		model.addAttribute("projects", projectRepository.findAll());
-		
-		return "projects/select";
+	    return "projects/select";
 	}
 	
 	@RequestMapping(value = "/projects/select/{id}", method = RequestMethod.GET)
