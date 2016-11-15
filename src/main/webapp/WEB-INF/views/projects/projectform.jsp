@@ -23,6 +23,7 @@
 		<c:when test="${projectForm['new']}">
 			<h1>Create Project</h1>
 		</c:when>
+		
 		<c:otherwise>
 			<h1>Update Project</h1>
 		</c:otherwise>
@@ -261,10 +262,13 @@
 					<c:when test="${projectForm['new']}">
 						<button type="submit" class="btn-lg btn-primary pull-right">Add</button>
 					</c:when>
-					<c:otherwise>
-						<button type="submit" class="btn-lg btn-primary pull-right">Update Values</button>
+					<c:when test="${!select}">
+					<button type="submit" class="btn-lg btn-primary pull-right">Update Values</button>
 						<spring:url value="/projects/deletefile/${project.id}/<%=valueSelected %>" var="deleteurl" />
 						<button class="btn btn-danger" onclick="this.disabled=true;post('${deleteurl}')">Delete Files</button>
+					</c:when>
+					<c:otherwise>
+						
 					</c:otherwise>
 				</c:choose>
 			</div>
