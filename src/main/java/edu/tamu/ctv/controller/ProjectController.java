@@ -279,16 +279,18 @@ public class ProjectController
 	}
 	
 	@RequestMapping(value = "/projects/view/{id}", method = RequestMethod.GET)
-	public String grantViewAccess(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
+	public String grantViewAccess(@PathVariable("id") Long id , @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
 	{
 		Projects project = projectRepository.findOne(id);
+		
+	
 		ProjectUserMapping lMapping =mappingRepository.findmapbyProjectandUserID(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
 		HttpSession session = request.getSession();
 		session.setAttribute("projectId", id);
 		session.setAttribute("currentProjectCode", project.getCode());
 		if(lMapping.getId()!=null){
 			ProjectAccess lProjAccess =new ProjectAccess();
-			lProjAccess=projectAccessRepository.findAccess(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
+			lProjAccess=projectAccessRepository.findAccessP(id.intValue());
 			if(lProjAccess!=null && lProjAccess.getId()!=null && lProjAccess.getRead()!=' ' && lProjAccess.getRead()=='Y' ){
 				redirectAttributes.addFlashAttribute("Access Granted Successfully");
 			}
@@ -357,7 +359,7 @@ public class ProjectController
 		if(lMapping.getId()!=null){
 			
 			ProjectAccess lProjAccess =new ProjectAccess();
-			lProjAccess=projectAccessRepository.findAccess(id.intValue(),projectAuthentication.getCurrentUser().getId().intValue());
+			lProjAccess=projectAccessRepository.findAccessP(id.intValue());
 			if(lProjAccess!=null && lProjAccess.getId()!=null && lProjAccess.getWrite()!=' ' && lProjAccess.getWrite()=='Y'){
 				redirectAttributes.addFlashAttribute("Access Granted Successfully");
 			}
@@ -380,14 +382,19 @@ public class ProjectController
 		return "redirect:/projects/"+id;
 	}
 	@RequestMapping(value = "/projects/revokeaccess/{id}", method = RequestMethod.GET)
-	public String revokeAccess(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request)
+	public String revokeAccess(@PathVariable("id") Long id, @RequestParam(value = "todoaction", required = false) String TODOAction, Model model, HttpServletRequest request,final RedirectAttributes redirectAttributes)
 	{
 		
-		ProjectAccess lAccess =projectAccessRepository.findAccess(id.intValue(), projectAuthentication.getCurrentUser().getId().intValue());
+		ProjectAccess lAccess =projectAccessRepository.findAccessP(id.intValue());
 		lAccess.setIs_Active('N');
+		lAccess.setRead('N');
+		lAccess.setWrite('N');
+		lAccess.setIs_Active('Y');
 			projectAccessRepository.save(lAccess);
+			redirectAttributes.addFlashAttribute("css", "success");
+			redirectAttributes.addFlashAttribute("msg","Access Revoked Successfully");
 		
-		return "Access Revoked Successfully";
+		return "redirect:/projects/"+id;
 	}
 	
 	@RequestMapping(value = "/projects/deletefile/{id}/{filename}", method = RequestMethod.GET)

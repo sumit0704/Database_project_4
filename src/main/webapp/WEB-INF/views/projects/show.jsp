@@ -21,13 +21,17 @@
 		<label class="col-sm-2">Name</label>
 		<div class="col-sm-10">${project.name}</div>
 	</div>
-
-	<spring:url value="/projects/select/${project.id}" var="selecturl" />
+		<c:set var="project_id"  value="${project.id}"/>
+      	<c:set var="user_id"  value="${user_id}"/>
+	
+	
+    <spring:url value="/projects/select/${project.id}" var="selecturl" />
 	<button data-toggle="tooltip" class="btn btn-primary" id="select" onclick="location.href='${selecturl}'" title="View" style="float: right;"><span class="glyphicon glyphicon-edit"></span> View</button>
 	<spring:url value="/projects/update/${project.id}" var="updateUrl" />
 	<button data-toggle="tooltip" class="btn btn-primary" id="Edit" onclick="location.href='${updateUrl}'" title="Edit" style="float: right;"><span class="glyphicon glyphicon-edit"></span> Edit</button>
 	<spring:url value="/upload?projectId=${project.id}" var="importActionUrl" />
 	<button data-toggle="tooltip" class="btn btn-primary" id="Upload" onclick="location.href='${importActionUrl}'" title="Upload Files" style="float: right;"><span class="glyphicon glyphicon-upload"></span> Upload Files</button>
+ 	
 	
 </div>
 
@@ -53,8 +57,7 @@
       	<div id="namediv" class = "col-sm-3 col-md-3 col-lg-3">
       	<p style="color:blue;"><b>Grant Access</b></p>
       	</div>
-      	<c:set var="project_id"  value="${project.id}"/>
-      	<c:set var="user_id"  value="${user_id}"/>
+      
       	<% 
 
 java.sql.Connection con1;
@@ -131,8 +134,8 @@ while( rs1.next() ){
       		<script type="text/javascript">
 		  function hidediv(){
 			  document.getElementById("access").style.display = "none";
-			  document.getElementById("Edit").style.display = "none";
-			  document.getElementById("Upload").style.display = "none";
+			/*   document.getElementById("Edit").style.display = "none";
+			  document.getElementById("Upload").style.display = "none" */;
 		  }
 		  hidediv();
 		</script>
@@ -140,7 +143,7 @@ while( rs1.next() ){
       	
       	<% } %>
      
-      	 <% if (rs1.getString("approved")!=null && rs1.getString("approved").charAt(0)=='Y') { %><spring:url value="/projects/view/${project.id}" var="viewaccessurl" />
+      	 <% if (rs1.getString("approved")!=null && rs1.getString("approved").charAt(0)=='Y') { %><spring:url value="/projects/view/${project.id}/" var="viewaccessurl" />
    		<button class="btn btn-info" onclick="location.href='${viewaccessurl}'">View</button>
    		<spring:url value="/projects/updateaccess/${project.id}" var="updateaccess" />
 		<button class="btn btn-primary" onclick="location.href='${updateaccess}'">Update</button>
@@ -160,20 +163,6 @@ while( rs1.next() ){
    		<spring:url value="/projects/reject/${project.id}" var="rejecturl" />
 		<button class="btn btn-primary" onclick="location.href='${rejecturl}'">Reject</button>
 		<%} %>
-      	</div>
-      	<% if (rs1.getString("is_Active")=="N") {
-      		value="Access Revoked";
-      	}
-      	%>
-      	
-      	<% 
-      	 if (rs1.getString("is_Active")=="Y"){
-      		value=rs1.getString("is_Active");
-      	}
-      	%>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<%=value %>
-      	
       	</div>
       	</div>
       	
@@ -202,7 +191,7 @@ if(con1!=null)
 	
 	 </div>
 </div>
-<div class="container">
+<div id="filediv" class="container">
 <div class="row">
 		<label class="col-sm-2">==========================================================================================================================================</label>
 
@@ -295,7 +284,108 @@ if(con1!=null)
 }
 
 %>
+		<% 
+
+java.sql.Connection con3;
+java.sql.Statement s3;
+java.sql.ResultSet rs3;
+java.sql.PreparedStatement pst3;
+
+con3=null;
+s3=null;
+pst3=null;
+rs3=null;
+String url3= 
+"jdbc:postgresql://localhost:5432/webtoxpi";
+String id3= "postgres";
+String pass3 = "root";
+try{
 	
+
+	Class.forName("org.postgresql.Driver").newInstance();
+con3 = java.sql.DriverManager.getConnection(url3, id3, pass3);
+
+} catch(ClassNotFoundException cnfex){
+cnfex.printStackTrace();
+
+}
+String sql3 = "select read,write from projectaccess where user_id=? and project_id=? and is_Active='Y'";
+
+try{
+pst3 = con3.prepareStatement(sql3);
+pst3.setInt(2, Integer.parseInt(pageContext.getAttribute("project_id").toString()));
+pst3.setInt(1, Integer.parseInt(pageContext.getAttribute("user_id").toString()));
+rs3 = pst3.executeQuery();
+System.out.println("Valyeeeeeeeeeeeeeeeeeee--------------------------->"+pst3);
+%>
+<%
+if (!rs3.isBeforeFirst() ) { 
+
+%>
+
+
+<%
+}
+else{
+	int count=0;
+	String value="";
+while( rs3.next() ){
+	count++;
+%>
+<%
+	if(rs3.getString("read")!=null && rs3.getString("read").toString().equals("Y")){
+		System.out.println("Valyeeeeeeeeeeeeeeeeeee--------------------------->YOOOOOOOOOO");
+	%>	
+	<%} else{%>
+		<script type=text/javascript>
+		function hidebuttonDiv(){
+			document.getElementById("select").style.display = "none";
+			document.getElementById("filediv").style.display = "none";
+			document.getElementById("Edit").style.display = "none";
+			document.getElementById("Upload").style.display = "none";
+		}
+		hidebuttonDiv();
+		</script>	
+		
+	<% }%>
+	<%
+	
+	if(rs3.getString("write")!=null && rs3.getString("write").toString().equals("Y")){
+		System.out.println("Valyeeeeeeeeeeeeeeeeeee--------------------------->YOOOOOOOOOO");
+	%>	
+	<%} else{%>
+		<script type=text/javascript>
+		function hidebuttonDiv(){
+			document.getElementById("Edit").style.display = "none";
+			document.getElementById("Upload").style.display = "none";
+		}
+		hidebuttonDiv();
+		</script>	
+		
+	<% }%>
+	
+	
+ 
+ <%
+      
+}
+%>
+
+<%
+
+} 
+}
+catch(Exception e){e.printStackTrace();}
+finally{
+if(rs3!=null) 
+	rs3.close();
+if(s3!=null) 
+	s3.close();
+if(con3!=null) 
+	con3.close();
+}
+
+%>
 
 </div>
 </div>

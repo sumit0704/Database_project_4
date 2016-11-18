@@ -130,10 +130,12 @@ if (!rs1.isBeforeFirst() ) {
 }
 else{
 	int count=0;
+
 while( rs1.next() ){
 	count++;
+	
 %>
-
+	
     <div class="row well well-sm">
     	<div class="col-sm-2 col-md-2 col-lg-2"><%=count %></div>
     	<div class="col-sm-4 col-md-4 col-lg-4"><a href="<%= request.getContextPath()%>/projects/<%=rs1.getInt("project_id")%>"><%=rs1.getString("code") %></a></div>
@@ -171,9 +173,9 @@ if(con1!=null)
 <div class="container scrollDiv" id="searchable-container" style="margin-top: 10 px;width: 70%">
 
 <div class="row well well-sm">
-    	<div class="col-sm-2 col-md-2 col-lg-2"><b>Serial no</b></div>
     	<div class="col-sm-4 col-md-4 col-lg-4"><b>Project code</b></div>
     	<div class="col-sm-4 col-md-4 col-lg-4"><b>Project name</b></div>
+    	<div class="col-sm-4 col-md-4 col-lg-4"><b>Role</b></div>
     	<c:set var="user_id"  value="${user_id}"/>
        	
     </div>
@@ -223,15 +225,25 @@ if (!rs2.isBeforeFirst() ) {
 }
 else{
 	int count=0;
+	String lRole="";
 while( rs2.next() ){
+	if(rs2.getInt("role")==1){
+		lRole="Manager";
+	}
+	else if(rs2.getInt("role")==2){
+		lRole="Reviewer";
+	}
+	else if(rs1.getInt("role")==3){
+		lRole="Member";
+	}
 	count++;
 %>
 
     <div class="row well well-sm">
-    	<div class="col-sm-2 col-md-2 col-lg-2"><%=count %></div>
+    	<%-- <div class="col-sm-2 col-md-2 col-lg-2"><%=count %></div> --%>
     	<div class="col-sm-4 col-md-4 col-lg-4"><a href="<%= request.getContextPath()%>/projects/<%=rs2.getInt("project_id")%>"><%=rs2.getString("code") %></a></div>
     	<div class="col-sm-4 col-md-4 col-lg-4"><a href="<%= request.getContextPath()%>/projects/<%=rs2.getInt("project_id")%>"><%=rs2.getString("name") %></a></div>
-       	
+       	<div class="col-sm-4 col-md-4 col-lg-4"><a href="<%= request.getContextPath()%>/projects/<%=rs2.getInt("project_id")%>"><%=lRole %></a></div>
     </div>
     
 
