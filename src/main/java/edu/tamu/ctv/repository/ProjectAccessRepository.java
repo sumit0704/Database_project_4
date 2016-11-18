@@ -14,6 +14,8 @@ public interface ProjectAccessRepository extends CrudRepository<ProjectAccess, L
 {
 	  @Query(value="from ProjectAccess as fp where fp.project_id = :projectId and fp.user_id=:userId")
 	   ProjectAccess findAccess(@Param(value="projectId") Integer projectId, @Param(value="userId") Integer userId);
+	  @Query(value="from ProjectAccess as fp where fp.project_id = :projectId")
+	   ProjectAccess findAccessP(@Param(value="projectId") Integer projectId);
 	  @Query(value="from ProjectAccess as fp where fp.project_id = :projectId and fp.user_id=:userId and fp.read='Y'")
 	   ProjectAccess findRead(@Param(value="projectId") Integer projectId, @Param(value="userId") Integer userId);
 	  @Query(value="from ProjectAccess as fp where fp.project_id = :projectId and fp.user_id=:userId and fp.write='Y'")
